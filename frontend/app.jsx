@@ -1,7 +1,7 @@
 import React from 'react';
 import { ProtectedRoute, AuthRoute } from './util/route_util/protected_route';
 import UserDashboard from './components/user_dashboard';
-import LoginPage from './components/login/gateway_page';
+import GatewayPage from './components/gateway/gateway_page';
 
 const App = () => {
   return(

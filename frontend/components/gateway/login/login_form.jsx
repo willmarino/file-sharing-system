@@ -7,6 +7,7 @@ class LoginForm extends React.Component{
       message : 'before'
     }
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.navigateToRegister = this.navigateToRegister.bind(this);
   }
 
   handleSubmit(e){
@@ -14,19 +15,25 @@ class LoginForm extends React.Component{
     this.setState({ message : 'after' });
   }
 
+  navigateToRegister(){
+    debugger;
+    this.props.history.push('/gateway/register');
+  }
+
   render(){
     return(
-      <div className='login-form-container'>
+      <div className='gateway-form-container'>
+        <p onClick={this.navigateToRegister} >Register Page</p>
         <form onSubmit={this.handleSubmit}>
-          <div>
+          <div className='credentials-form-row'>
             <p>username</p>
             <input type='text'/>
           </div>
-          <div>
+          <div className='credentials-form-row'>
             <p>password</p>
             <input type='text'/>
           </div>
-          <div>
+          <div className='credentials-submit-row'>
             <input type='submit' value='submit'/>
           </div>
         </form>

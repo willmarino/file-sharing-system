@@ -1,6 +1,6 @@
 import React from 'react';
 
-class LoginForm extends React.Component{
+class RegisterForm extends React.Component{
   constructor(props){
     super(props);
     this.state = {
@@ -9,11 +9,13 @@ class LoginForm extends React.Component{
       credentials: {
         username: '',
         password: '',
+        confirm_password: '',
         email: ''
       }
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.validate = this.validate.bind(this);
+    this.navigateToLogin = this.navigateToLogin.bind(this);
   }
 
   handleSubmit(e){
@@ -26,27 +28,32 @@ class LoginForm extends React.Component{
 
   }
 
+  navigateToLogin(){
+    this.props.history.push('/gateway');
+  }
+
   render(){
     return(
-      <div className='login-form-container'>
+      <div className='gateway-form-container'>
+        <p onClick={this.navigateToLogin} >Login Page</p>
         <form onSubmit={this.handleSubmit}>
           <div className='credentials-form-row'>
             <p>Email</p>
-            <input type='text' value={this.state.credentials.username}/>
+            <input type='text' value={this.state.credentials.email}/>
           </div>
           <div className='credentials-form-row'>
             <p>Username</p>
-            <input type='text'/>
+            <input type='text' value={this.state.credentials.username}/>
           </div>
           <div className='credentials-form-row'>
             <p>Password</p>
-            <input type='hidden'/>
+            <input type='text' value={this.state.credentials.password}/>
           </div>
           <div className='credentials-form-row'>
             <p>Confirm Password</p>
-            <input type='hidden'/>
+            <input type='text' value={this.state.credentials.confirm_password}/>
           </div>
-          <div>
+          <div className='credentials-submit-row'>
             <input type='submit' value='submit'/>
           </div>
         </form>
@@ -57,4 +64,4 @@ class LoginForm extends React.Component{
   }
 }
 
-export default LoginForm;
+export default RegisterForm;

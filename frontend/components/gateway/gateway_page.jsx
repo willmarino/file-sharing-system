@@ -8,7 +8,7 @@ const GatewayPage = (props) => {
   return(
     <div className='gateway-page-container'>
       <Route exact path='/gateway' component={LoginFormContainer}/>
-      <Route exact path='/gateway_register' component={RegisterFormContainer}/>
+      <Route exact path='/gateway/register' component={RegisterFormContainer}/>
     </div>
   )
 }

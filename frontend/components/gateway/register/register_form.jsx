@@ -15,6 +15,7 @@ class RegisterForm extends React.Component{
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.validate = this.validate.bind(this);
+    this.navigateToLogin = this.navigateToLogin.bind(this);
   }
 
   handleSubmit(e){
@@ -27,9 +28,14 @@ class RegisterForm extends React.Component{
 
   }
 
+  navigateToLogin(){
+    this.props.history.push('/gateway');
+  }
+
   render(){
     return(
       <div className='gateway-form-container'>
+        <p onClick={this.navigateToLogin} >Login Page</p>
         <form onSubmit={this.handleSubmit}>
           <div className='credentials-form-row'>
             <p>Email</p>
@@ -41,11 +47,11 @@ class RegisterForm extends React.Component{
           </div>
           <div className='credentials-form-row'>
             <p>Password</p>
-            <input type='hidden' value={this.state.credentials.password}/>
+            <input type='text' value={this.state.credentials.password}/>
           </div>
           <div className='credentials-form-row'>
             <p>Confirm Password</p>
-            <input type='hidden' value={this.state.credentials.confirm_password}/>
+            <input type='text' value={this.state.credentials.confirm_password}/>
           </div>
           <div className='credentials-submit-row'>
             <input type='submit' value='submit'/>

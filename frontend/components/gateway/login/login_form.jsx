@@ -17,12 +17,13 @@ class LoginForm extends React.Component{
 
   navigateToRegister(){
     debugger;
-    this.props.history.push('/gateway_register');
+    this.props.history.push('/gateway/register');
   }
 
   render(){
     return(
       <div className='gateway-form-container'>
+        <p onClick={this.navigateToRegister} >Register Page</p>
         <form onSubmit={this.handleSubmit}>
           <div className='credentials-form-row'>
             <p>username</p>
@@ -37,7 +38,6 @@ class LoginForm extends React.Component{
           </div>
         </form>
         <p>{this.state.message}</p>
-        <p onClick={this.navigateToRegister} >Register</p>
       </div>
     )
   }

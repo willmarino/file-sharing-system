@@ -9,56 +9,85 @@ class RegisterForm extends React.Component{
       credentials: {
         username: '',
         password: '',
-        confirm_password: '',
+        confirmPassword: '',
         email: ''
       }
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.validate = this.validate.bind(this);
     this.navigateToLogin = this.navigateToLogin.bind(this);
+    this.update = this.update.bind(this);
   }
 
   handleSubmit(e){
     e.preventDefault();
+    this.setState({ errors: [] });
     this.validate();
-    this.setState({ message : 'after' });
+    if(this.state.errors.length === 0){
+      this.props.signupUser(this.state.credentials);
+    }
   }
 
   validate(){
-
+    let errors = [];
+    let input = this.state.credentials;
+    if(input.username.length < 6){
+      errors.push(<li key='error1'><p>username must be longer than 5 characters</p></li>);
+    }
+    if(input.password.length < 6){
+      errors.push(<li key='error2'><p>password must be longer than 5 characters</p></li>);
+    }
+    if(input.password === 'password'){
+      errors.push(<li key='error3'><p>password cannot be password</p></li>);
+    }
+    if(!input.email.includes('@')){
+      errors.push(<li key='error4'><p>email must be a valid email</p></li>);
+    }
+    if(input.password !== input.confirmPassword){
+      errors.push(<li key='error5'><p>password confirmation field must match password</p></li>);
+    }
+    this.setState({ errors });
   }
 
   navigateToLogin(){
     this.props.history.push('/gateway');
   }
 
+  update(field){
+    return (e) => {
+      let credentials = this.state.credentials;
+      credentials[field] = e.currentTarget.value;
+      this.setState({ credentials });
+    }
+  }
+
   render(){
     return(
       <div className='gateway-form-container'>
-        <p onClick={this.navigateToLogin} >Login Page</p>
+        <h1>Register!</h1>
+        <p onClick={this.navigateToLogin} >Go To Login Page</p>
         <form onSubmit={this.handleSubmit}>
           <div className='credentials-form-row'>
             <p>Email</p>
-            <input type='text' value={this.state.credentials.email}/>
+            <input type='text' value={this.state.credentials.email} onChange={this.update('email')}/>
           </div>
           <div className='credentials-form-row'>
             <p>Username</p>
-            <input type='text' value={this.state.credentials.username}/>
+            <input type='text' value={this.state.credentials.username} onChange={this.update('username')}/>
           </div>
           <div className='credentials-form-row'>
             <p>Password</p>
-            <input type='text' value={this.state.credentials.password}/>
+            <input type='password' value={this.state.credentials.password} onChange={this.update('password')}/>
           </div>
           <div className='credentials-form-row'>
             <p>Confirm Password</p>
-            <input type='text' value={this.state.credentials.confirm_password}/>
+            <input type='password' value={this.state.credentials.confirm_password} onChange={this.update('confirmPassword')}/>
           </div>
           <div className='credentials-submit-row'>
-            <input type='submit' value='submit'/>
+            <input type='submit' value='register'/>
           </div>
         </form>
-        <p>{this.state.message}</p>
-        <p>{this.state.errors}</p>
+        <ul>{this.state.errors}</ul>
       </div>
     )
   }

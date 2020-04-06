@@ -19,6 +19,12 @@ class Api::UsersController < ApplicationController
   # create new user, and return that user
   def create
     @user = User.create!(user_params)
+    if @user
+      login(@user)
+      render :show
+    else
+      render json: @user.error_messages, status: 400
+    end
   end
 
   # update existing user, and return that user

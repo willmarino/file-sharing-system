@@ -2,9 +2,10 @@ class Api::SessionsController < ApplicationController
 
   # controller logic for login
   def create
-    @user = User.find_by_credentials(params[:user][:username], params[:user][:password])
+    @user = User.find_by_credentials(params[:user][:email], params[:user][:password])
     if @user
-      @user.login
+      login(@user)
+      @userId = @user.id
       render :show
     else
       render json: ['User cannot be found'], status: 401

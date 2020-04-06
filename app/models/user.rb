@@ -16,8 +16,8 @@ class User < ApplicationRecord
   after_initialize :ensure_session_token
 
   # the User.find_by_credentials method is used on login, when the code in the create session controller action will attempt to find a user with the given login 'credentials'
-  def self.find_by_credentials(username, password)
-    user = self.find_by(username: username)
+  def self.find_by_credentials(email, password)
+    user = self.find_by(email: email)
     if user
       return (user.is_password?(password)) ? user : nil
     else

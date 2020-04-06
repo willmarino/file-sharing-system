@@ -1,10 +1,11 @@
 import * as UserUtil from '../util/other_util/user_util';
+import { receiveSession } from './session_actions';
 
 export const RECEIVE_USER = 'RECEIVE_USER';
 export const RECEIVE_USERS = 'RECEIVE_USERS';
 export const REMOVE_USER = 'REMOVE_USER';
 
-const receiveUser = (user) => ({
+export const receiveUser = (user) => ({
   type: RECEIVE_USER,
   user
 });
@@ -19,7 +20,10 @@ const removeUser = (userId) => ({
   userId
 });
 
-export const signUpUser = (user) => (
+export const signupUser = (user) => dispatch => (
   UserUtil.signUpUser(user)
-    .then(res => receiveUser(res.user))
+    .then(res => {
+      dispatch(receiveUser(res.user));
+      dispatch(receiveSession(res.user.id));
+    })
 )

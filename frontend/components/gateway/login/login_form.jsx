@@ -1,4 +1,5 @@
 import React from 'react';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 class LoginForm extends React.Component{
   constructor(props){
@@ -8,11 +9,16 @@ class LoginForm extends React.Component{
       credentials : {
         email : '',
         password : ''
-      }
+      },
+      mounted: false
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.navigateToRegister = this.navigateToRegister.bind(this);
     this.validate = this.validate.bind(this);
+  }
+
+  componentDidMount(){
+    this.setState({mounted: true})
   }
 
   handleSubmit(e){
@@ -50,24 +56,26 @@ class LoginForm extends React.Component{
 
   render(){
     return(
-      <div className='gateway-form-container'>
-        <p className='gateway-form-header'>Login!</p>
-        <form onSubmit={this.handleSubmit}>
-          <div className='credentials-form-row'>
-            <p className='credentials-form-row-header'>E-mail</p>
-            <input className='gateway-form-input' type='text' value={this.state.credentials.email} onChange={this.update('email')}/>
-          </div>
-          <div className='credentials-form-row'>
-            <p className='credentials-form-row-header'>Password</p>
-            <input className='gateway-form-input' type='password' value={this.state.credentials.password} onChange={this.update('password')}/>
-          </div>
-          <div className='credentials-submit-row'>
-            <input type='submit' value='Login'/>
-          </div>
-        </form>
-        <p className='gateway-form-navigator' onClick={this.navigateToRegister} >Go To Register Page</p>
-        <ul>{this.state.errors}</ul>
-      </div>
+      <CSSTransition classNames='gateway-form-container-transition' in={this.state.mounted} timeout={500}>
+        <div className='gateway-form-container'>
+          <p className='gateway-form-header'>Login!</p>
+          <form onSubmit={this.handleSubmit}>
+            <div className='credentials-form-row'>
+              <p className='credentials-form-row-header'>E-mail</p>
+              <input className='gateway-form-input' type='text' value={this.state.credentials.email} onChange={this.update('email')}/>
+            </div>
+            <div className='credentials-form-row'>
+              <p className='credentials-form-row-header'>Password</p>
+              <input className='gateway-form-input' type='password' value={this.state.credentials.password} onChange={this.update('password')}/>
+            </div>
+            <div className='credentials-submit-row'>
+              <input className='submit-button' type='submit' value='Login'/>
+            </div>
+          </form>
+          <p className='gateway-form-navigator' onClick={this.navigateToRegister} >Registration Page</p>
+          <ul>{this.state.errors}</ul>
+        </div>
+      </CSSTransition>
     )
   }
 }

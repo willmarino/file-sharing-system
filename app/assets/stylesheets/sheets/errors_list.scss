@@ -1,0 +1,11 @@
+.errors-list{
+  min-height: 23px;
+  display: flex;
+  flex-direction: column;
+}
+
+.errors-list p{
+  padding-top: 1px;
+  font-size: 11px;
+  color: #b0000c;
+}

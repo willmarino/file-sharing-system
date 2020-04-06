@@ -1,16 +1,21 @@
 import React from 'react';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import createErrorsComponent from '../../errors/errors_component';
 
 class LoginForm extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      errors: [],
+      errors: {
+        emailErrors: [],
+        passwordErrors: []
+      },
       credentials : {
         email : '',
         password : ''
       },
-      mounted: false
+      mounted: false,
+      errorsShowing: false
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.navigateToRegister = this.navigateToRegister.bind(this);
@@ -27,16 +32,19 @@ class LoginForm extends React.Component{
   }
 
   validate(){
-    let errors = [];
+    let errors = {
+      emailErrors: [],
+      passwordErrors: []
+    };
     let input = this.state.credentials;
     if(input.password.length < 6){
-      errors.push(<li key='error1'><p> Not a valid password</p></li>);
+      errors.passwordErrors.push('Not a valid password');
     }
     if(!input.email.includes('@')){
-      errors.push(<li key='error2'><p>Email must be valid</p></li>);
+      errors.emailErrors.push('Not a valid email')
     }
-    this.setState({ errors }, () => {
-      if(this.state.errors.length === 0){
+    this.setState({ errors: errors, errorsShowing: true }, () => {
+      if(Object.values(this.state.errors).every(errorsSection => errorsSection.length === 0)){
         this.props.loginUser(this.state.credentials);
       }
     });
@@ -55,6 +63,7 @@ class LoginForm extends React.Component{
   }
 
   render(){
+    debugger;
     return(
       <CSSTransition classNames='gateway-form-container-transition' in={this.state.mounted} timeout={500}>
         <div className='gateway-form-container'>
@@ -63,17 +72,18 @@ class LoginForm extends React.Component{
             <div className='credentials-form-row'>
               <p className='credentials-form-row-header'>E-mail</p>
               <input className='gateway-form-input' type='text' value={this.state.credentials.email} onChange={this.update('email')}/>
+              {createErrorsComponent(this.state.errors.emailErrors, this.state.errorsShowing)}
             </div>
             <div className='credentials-form-row'>
               <p className='credentials-form-row-header'>Password</p>
               <input className='gateway-form-input' type='password' value={this.state.credentials.password} onChange={this.update('password')}/>
+              {createErrorsComponent(this.state.errors.passwordErrors, this.state.errorsShowing)}
             </div>
             <div className='credentials-submit-row'>
               <input className='submit-button' type='submit' value='Login'/>
             </div>
           </form>
           <p className='gateway-form-navigator' onClick={this.navigateToRegister} >Registration Page</p>
-          <ul>{this.state.errors}</ul>
         </div>
       </CSSTransition>
     )

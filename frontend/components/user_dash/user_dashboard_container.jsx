@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import UserDashboard from './user_dashboard';
-import { logoutUser } from '../actions/session_actions';
+import { logoutUser } from '../../actions/session_actions';
 
 const mdp = (dispatch) => ({
   logoutUser : () => dispatch(logoutUser())

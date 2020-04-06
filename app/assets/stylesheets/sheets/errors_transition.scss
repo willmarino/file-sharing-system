@@ -1,0 +1,21 @@
+.errors-transition-enter {
+  opacity: 0.1;
+  // transform: scale(1.2);
+}
+
+.errors-transition-enter-active {
+  opacity: 1;
+  // transform: scale(1);
+  transition: all 500ms;
+}
+
+.errors-transition-exit {
+  opacity: 1;
+  // transform: scale(1);
+}
+
+.errors-transition-exit-active {
+  opacity: 0.01;
+  // transform: scale(1.1);
+  transition: all 500ms;
+}

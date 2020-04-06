@@ -17,30 +17,23 @@ class LoginForm extends React.Component{
 
   handleSubmit(e){
     e.preventDefault();
-    debugger;
-    this.setState({ errors: [] })
-    debugger;
     this.validate();
-    debugger;
-    if(this.state.errors.length === 0){
-      debugger;
-      this.props.loginUser(this.state.credentials);
-    }
-    debugger;
   }
 
   validate(){
     let errors = [];
     let input = this.state.credentials;
     if(input.password.length < 6){
-      errors.push(<li key='error1'><p>Not a valid password</p></li>);
+      errors.push(<p key='error1'>Not a valid password</p>);
     }
     if(!input.email.includes('@')){
-      errors.push(<li key='error2'><p>Email must be valid</p></li>);
+      errors.push(<p key='error2'>Email must be valid</p>);
     }
-    debugger;
-    this.setState({ errors });
-    debugger;
+    this.setState({ errors }, () => {
+      if(this.state.errors.length === 0){
+        this.props.loginUser(this.state.credentials);
+      }
+    });
   }
 
   navigateToRegister(){
@@ -73,7 +66,7 @@ class LoginForm extends React.Component{
             <input type='submit' value='login'/>
           </div>
         </form>
-        <ul>{this.state.errors}</ul>
+        <div>{this.state.errors}</div>
       </div>
     )
   }

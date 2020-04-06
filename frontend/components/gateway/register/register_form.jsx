@@ -23,9 +23,6 @@ class RegisterForm extends React.Component{
     e.preventDefault();
     this.setState({ errors: [] });
     this.validate();
-    if(this.state.errors.length === 0){
-      this.props.signupUser(this.state.credentials);
-    }
   }
 
   validate(){
@@ -46,7 +43,11 @@ class RegisterForm extends React.Component{
     if(input.password !== input.confirmPassword){
       errors.push(<li key='error5'><p>password confirmation field must match password</p></li>);
     }
-    this.setState({ errors });
+    this.setState({ errors }, () => {
+      if(this.state.errors.length === 0){
+        this.props.signupUser(this.state.credentials);
+      }
+    });
   }
 
   navigateToLogin(){

@@ -11,12 +11,13 @@ class LoginForm extends React.Component{
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.navigateToRegister = this.navigateToRegister.bind(this);
+    this.validate = this.validate.bind(this);
   }
 
   handleSubmit(e){
     e.preventDefault();
     // this.validate();
-
+    this.props.loginUser(this.state.credentials);
   }
 
   validate(){
@@ -27,6 +28,14 @@ class LoginForm extends React.Component{
     this.props.history.push('/gateway/register');
   }
 
+  update(field){
+    return (e) => {
+      let credentials = this.state.credentials;
+      credentials[field] = e.currentTarget.value;
+      this.setState({ credentials });
+    }
+  }
+
   render(){
     return(
       <div className='gateway-form-container'>
@@ -35,11 +44,11 @@ class LoginForm extends React.Component{
         <form onSubmit={this.handleSubmit}>
           <div className='credentials-form-row'>
             <p>email</p>
-            <input type='text'/>
+            <input type='text' value={this.state.credentials.email} onChange={this.update('email')}/>
           </div>
           <div className='credentials-form-row'>
             <p>password</p>
-            <input type='text'/>
+            <input type='text' value={this.state.credentials.password} onChange={this.update('password')}/>
           </div>
           <div className='credentials-submit-row'>
             <input type='submit' value='login'/>

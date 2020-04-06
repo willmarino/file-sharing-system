@@ -1,0 +1,39 @@
+.gateway-form-container{
+  height: 300px;
+  width: 300px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  box-sizing: border-box;
+
+  padding: 50px;
+  margin-bottom: 20vh;
+
+  background: 	#E8E8E8;
+  border-radius: 20px;
+  border: 1px solid #888888;
+}
+
+.gateway-form-header{
+  font-size: 20px;
+  padding-bottom: 20px;
+}
+
+.credentials-form-row-header{
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+
+.credentials-form-row{
+  margin: 10px 0px;
+}
+
+.gateway-form-input{
+  width: 100%;
+}
+
+.gateway-form-navigator{
+  padding-top: 20px;
+}

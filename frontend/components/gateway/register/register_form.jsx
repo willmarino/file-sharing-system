@@ -64,30 +64,30 @@ class RegisterForm extends React.Component{
 
   render(){
     return(
-      <div className='gateway-form-container'>
-        <h1>Register!</h1>
-        <p onClick={this.navigateToLogin} >Go To Login Page</p>
+      <div className='gateway-form-container' id='registration-form'>
+        <p className='gateway-form-header'>Register!</p>
         <form onSubmit={this.handleSubmit}>
           <div className='credentials-form-row'>
-            <p>Email</p>
-            <input type='text' value={this.state.credentials.email} onChange={this.update('email')}/>
+            <p className='credentials-form-row-header'>E-mail</p>
+            <input className='gateway-form-input' type='text' value={this.state.credentials.email} onChange={this.update('email')}/>
           </div>
           <div className='credentials-form-row'>
-            <p>Username</p>
-            <input type='text' value={this.state.credentials.username} onChange={this.update('username')}/>
+            <p className='credentials-form-row-header'>Username</p>
+            <input className='gateway-form-input' type='text' value={this.state.credentials.username} onChange={this.update('username')}/>
           </div>
           <div className='credentials-form-row'>
-            <p>Password</p>
-            <input type='password' value={this.state.credentials.password} onChange={this.update('password')}/>
+            <p className='credentials-form-row-header'>Password</p>
+            <input className='gateway-form-input' type='password' value={this.state.credentials.password} onChange={this.update('password')}/>
           </div>
           <div className='credentials-form-row'>
-            <p>Confirm Password</p>
-            <input type='password' value={this.state.credentials.confirm_password} onChange={this.update('confirmPassword')}/>
+            <p className='credentials-form-row-header'>Confirm Password</p>
+            <input className='gateway-form-input' type='password' value={this.state.credentials.confirm_password} onChange={this.update('confirmPassword')}/>
           </div>
           <div className='credentials-submit-row'>
-            <input type='submit' value='register'/>
+            <input type='submit' value='Register'/>
           </div>
         </form>
+        <p className='gateway-form-navigator' onClick={this.navigateToLogin} >Go To Login Page</p>
         <ul>{this.state.errors}</ul>
       </div>
     )

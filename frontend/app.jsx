@@ -5,7 +5,7 @@ import GatewayPage from './components/gateway/gateway_page';
 
 const App = () => {
   return(
-    <div>
+    <div className='app-container'>
       <ProtectedRoute path='/' component={UserDashboardContainer}/>
       <AuthRoute path='/gateway' component={GatewayPage}/>
     </div>

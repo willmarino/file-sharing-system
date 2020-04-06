@@ -8,8 +8,18 @@
  * You're free to add application-wide styles to this file and they'll appear at the bottom of the
  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
+ * It is generally better to create a new file per style scope. require tree not being used.
  *
- *= require_tree .
  *= require_self
  */
+
+@import './sheets/reset.scss';
+@import './sheets/super_reset.scss';
+@import './sheets/custom_global.scss';
+@import './sheets/custom_global_input.scss';
+@import './sheets/custom_global_submit.scss';
+@import './sheets/gateway_page.scss';
+@import './sheets/gateway_form.scss';
+@import './sheets/registration_form.scss';
+@import './sheets/gateway_container_transitions.scss';
+

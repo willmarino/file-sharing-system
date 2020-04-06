@@ -1,4 +1,5 @@
 import React from 'react';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 class RegisterForm extends React.Component{
   constructor(props){
@@ -11,7 +12,8 @@ class RegisterForm extends React.Component{
         password: '',
         confirmPassword: '',
         email: ''
-      }
+      },
+      mounted: false
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.validate = this.validate.bind(this);
@@ -23,9 +25,6 @@ class RegisterForm extends React.Component{
     e.preventDefault();
     this.setState({ errors: [] });
     this.validate();
-    if(this.state.errors.length === 0){
-      this.props.signupUser(this.state.credentials);
-    }
   }
 
   validate(){
@@ -46,7 +45,11 @@ class RegisterForm extends React.Component{
     if(input.password !== input.confirmPassword){
       errors.push(<li key='error5'><p>password confirmation field must match password</p></li>);
     }
-    this.setState({ errors });
+    this.setState({ errors }, () => {
+      if(this.state.errors.length === 0){
+        this.props.signupUser(this.state.credentials);
+      }
+    });
   }
 
   navigateToLogin(){
@@ -61,34 +64,40 @@ class RegisterForm extends React.Component{
     }
   }
 
+  componentDidMount(){
+    this.setState({mounted: true});
+  }
+
   render(){
     return(
-      <div className='gateway-form-container'>
-        <h1>Register!</h1>
-        <p onClick={this.navigateToLogin} >Go To Login Page</p>
-        <form onSubmit={this.handleSubmit}>
-          <div className='credentials-form-row'>
-            <p>Email</p>
-            <input type='text' value={this.state.credentials.email} onChange={this.update('email')}/>
-          </div>
-          <div className='credentials-form-row'>
-            <p>Username</p>
-            <input type='text' value={this.state.credentials.username} onChange={this.update('username')}/>
-          </div>
-          <div className='credentials-form-row'>
-            <p>Password</p>
-            <input type='password' value={this.state.credentials.password} onChange={this.update('password')}/>
-          </div>
-          <div className='credentials-form-row'>
-            <p>Confirm Password</p>
-            <input type='password' value={this.state.credentials.confirm_password} onChange={this.update('confirmPassword')}/>
-          </div>
-          <div className='credentials-submit-row'>
-            <input type='submit' value='register'/>
-          </div>
-        </form>
-        <ul>{this.state.errors}</ul>
-      </div>
+      <CSSTransition classNames='gateway-form-container-transition' in={this.state.mounted} timeout={500}>
+        <div className='gateway-form-container' id='registration-form'>
+          <p className='gateway-form-header'>Register!</p>
+          <form onSubmit={this.handleSubmit}>
+            <div className='credentials-form-row'>
+              <p className='credentials-form-row-header'>E-mail</p>
+              <input className='gateway-form-input' type='text' value={this.state.credentials.email} onChange={this.update('email')}/>
+            </div>
+            <div className='credentials-form-row'>
+              <p className='credentials-form-row-header'>Username</p>
+              <input className='gateway-form-input' type='text' value={this.state.credentials.username} onChange={this.update('username')}/>
+            </div>
+            <div className='credentials-form-row'>
+              <p className='credentials-form-row-header'>Password</p>
+              <input className='gateway-form-input' type='password' value={this.state.credentials.password} onChange={this.update('password')}/>
+            </div>
+            <div className='credentials-form-row'>
+              <p className='credentials-form-row-header'>Confirm Password</p>
+              <input className='gateway-form-input' type='password' value={this.state.credentials.confirm_password} onChange={this.update('confirmPassword')}/>
+            </div>
+            <div className='credentials-submit-row'>
+              <input className='submit-button' type='submit' value='Register'/>
+            </div>
+          </form>
+          <p className='gateway-form-navigator' onClick={this.navigateToLogin} >Login Page</p>
+          <ul>{this.state.errors}</ul>
+        </div>
+      </CSSTransition>
     )
   }
 }

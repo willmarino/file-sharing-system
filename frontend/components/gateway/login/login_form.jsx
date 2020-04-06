@@ -4,7 +4,10 @@ class LoginForm extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      message : 'before'
+      credentials : {
+        email : '',
+        password : ''
+      }
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.navigateToRegister = this.navigateToRegister.bind(this);
@@ -12,21 +15,26 @@ class LoginForm extends React.Component{
 
   handleSubmit(e){
     e.preventDefault();
-    this.setState({ message : 'after' });
+    // this.validate();
+
+  }
+
+  validate(){
+
   }
 
   navigateToRegister(){
-    debugger;
     this.props.history.push('/gateway/register');
   }
 
   render(){
     return(
       <div className='gateway-form-container'>
-        <p onClick={this.navigateToRegister} >Register Page</p>
+        <h1>Login!</h1>
+        <p onClick={this.navigateToRegister} >Go To Register Page</p>
         <form onSubmit={this.handleSubmit}>
           <div className='credentials-form-row'>
-            <p>username</p>
+            <p>email</p>
             <input type='text'/>
           </div>
           <div className='credentials-form-row'>
@@ -34,10 +42,9 @@ class LoginForm extends React.Component{
             <input type='text'/>
           </div>
           <div className='credentials-submit-row'>
-            <input type='submit' value='submit'/>
+            <input type='submit' value='login'/>
           </div>
         </form>
-        <p>{this.state.message}</p>
       </div>
     )
   }

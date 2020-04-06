@@ -9,19 +9,20 @@ class RegisterForm extends React.Component{
       credentials: {
         username: '',
         password: '',
-        confirm_password: '',
+        confirmPassword: '',
         email: ''
       }
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.validate = this.validate.bind(this);
     this.navigateToLogin = this.navigateToLogin.bind(this);
+    this.update = this.update.bind(this);
   }
 
   handleSubmit(e){
     e.preventDefault();
-    this.validate();
-    this.setState({ message : 'after' });
+    // this.validate();
+    this.props.signupUser(this.state.credentials);
   }
 
   validate(){
@@ -32,32 +33,40 @@ class RegisterForm extends React.Component{
     this.props.history.push('/gateway');
   }
 
+  update(field){
+    return (e) => {
+      let credentials = this.state.credentials;
+      credentials[field] = e.currentTarget.value;
+      this.setState({ credentials });
+    }
+  }
+
   render(){
     return(
       <div className='gateway-form-container'>
-        <p onClick={this.navigateToLogin} >Login Page</p>
+        <h1>Register!</h1>
+        <p onClick={this.navigateToLogin} >Go To Login Page</p>
         <form onSubmit={this.handleSubmit}>
           <div className='credentials-form-row'>
             <p>Email</p>
-            <input type='text' value={this.state.credentials.email}/>
+            <input type='text' value={this.state.credentials.email} onChange={this.update('email')}/>
           </div>
           <div className='credentials-form-row'>
             <p>Username</p>
-            <input type='text' value={this.state.credentials.username}/>
+            <input type='text' value={this.state.credentials.username} onChange={this.update('username')}/>
           </div>
           <div className='credentials-form-row'>
             <p>Password</p>
-            <input type='text' value={this.state.credentials.password}/>
+            <input type='text' value={this.state.credentials.password} onChange={this.update('password')}/>
           </div>
           <div className='credentials-form-row'>
             <p>Confirm Password</p>
-            <input type='text' value={this.state.credentials.confirm_password}/>
+            <input type='text' value={this.state.credentials.confirm_password} onChange={this.update('confirmPassword')}/>
           </div>
           <div className='credentials-submit-row'>
-            <input type='submit' value='submit'/>
+            <input type='submit' value='register'/>
           </div>
         </form>
-        <p>{this.state.message}</p>
         <p>{this.state.errors}</p>
       </div>
     )

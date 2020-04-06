@@ -4,6 +4,7 @@ class LoginForm extends React.Component{
   constructor(props){
     super(props);
     this.state = {
+      errors: [],
       credentials : {
         email : '',
         password : ''
@@ -16,12 +17,30 @@ class LoginForm extends React.Component{
 
   handleSubmit(e){
     e.preventDefault();
-    // this.validate();
-    this.props.loginUser(this.state.credentials);
+    debugger;
+    this.setState({ errors: [] })
+    debugger;
+    this.validate();
+    debugger;
+    if(this.state.errors.length === 0){
+      debugger;
+      this.props.loginUser(this.state.credentials);
+    }
+    debugger;
   }
 
   validate(){
-
+    let errors = [];
+    let input = this.state.credentials;
+    if(input.password.length < 6){
+      errors.push(<li key='error1'><p>Not a valid password</p></li>);
+    }
+    if(!input.email.includes('@')){
+      errors.push(<li key='error2'><p>Email must be valid</p></li>);
+    }
+    debugger;
+    this.setState({ errors });
+    debugger;
   }
 
   navigateToRegister(){
@@ -48,12 +67,13 @@ class LoginForm extends React.Component{
           </div>
           <div className='credentials-form-row'>
             <p>password</p>
-            <input type='text' value={this.state.credentials.password} onChange={this.update('password')}/>
+            <input type='password' value={this.state.credentials.password} onChange={this.update('password')}/>
           </div>
           <div className='credentials-submit-row'>
             <input type='submit' value='login'/>
           </div>
         </form>
+        <ul>{this.state.errors}</ul>
       </div>
     )
   }

@@ -1,5 +1,6 @@
 import * as UserUtil from '../util/other_util/user_util';
 import { receiveSession } from './session_actions';
+import { receiveUserErrors } from './user_errors_actions';
 
 export const RECEIVE_USER = 'RECEIVE_USER';
 export const RECEIVE_USERS = 'RECEIVE_USERS';
@@ -25,5 +26,8 @@ export const signupUser = (user) => dispatch => (
     .then(res => {
       dispatch(receiveUser(res.user));
       dispatch(receiveSession(res.user.id));
+    },
+    errors => {
+      dispatch(receiveUserErrors(errors.responsJSON[0]));
     })
 )

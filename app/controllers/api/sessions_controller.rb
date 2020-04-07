@@ -8,7 +8,7 @@ class Api::SessionsController < ApplicationController
       @userId = @user.id
       render :show
     else
-      render json: ['User cannot be found'], status: 401
+      render json: ['User cannot be found'], status: 400
     end
   end
 

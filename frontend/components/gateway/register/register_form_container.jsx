@@ -3,8 +3,8 @@ import { withRouter } from 'react-router-dom';
 import RegisterForm from './register_form';
 import { signupUser } from '../../../actions/user_actions';
 
-const msp = (state, ownProps) => ({
-  
+const msp = (state) => ({
+  registrationError: state.errors.userErrors
 })
 
 const mdp = (dispatch) => ({

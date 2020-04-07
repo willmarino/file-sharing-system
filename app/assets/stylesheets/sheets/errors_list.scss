@@ -1,11 +1,13 @@
 .errors-list{
   min-height: 23px;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
 }
 
 .errors-list p{
+  margin-top: 5px;
   padding-top: 1px;
   font-size: 11px;
+  line-height: 11px;
   color: #b0000c;
 }

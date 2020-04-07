@@ -1,5 +1,5 @@
 import React from 'react';
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import { CSSTransition } from 'react-transition-group';
 import createErrorsComponent from '../../errors/errors_component';
 
 class RegisterForm extends React.Component{
@@ -20,7 +20,7 @@ class RegisterForm extends React.Component{
         email: ''
       },
       mounted: false,
-      errorsShowing: true,
+      errorsShowing: false,
       checkErrors: false
     }
     this.checkForErrors = this.checkForErrors.bind(this);
@@ -81,7 +81,7 @@ class RegisterForm extends React.Component{
         return 'Username must be longer than 5 characters';
       }
     }else if(field === 'confirmPassword'){
-      if(credentials.confirmPassword.length !== credentials.password){
+      if(credentials.confirmPassword !== credentials.password){
         return 'Password confirmation field must match password field'
       }
     }
@@ -104,15 +104,20 @@ class RegisterForm extends React.Component{
   }
 
   checkForErrors(field){
+    debugger;
     if(this.state.errors[field].length !== 0){
+      debugger;
       if(!this.errorTests(field)){
+        debugger;
         let errors = this.state.errors;
         errors[field] = [];
         this.setState({ errors });
       }
     }else if(this.state.errors[field].length === 0){
       let isError = this.errorTests(field);
+      debugger;
       if(isError){
+        debugger;
         let errors = this.state.errors;
         errors[field].push(isError);
         this.setState({ errors });
@@ -128,7 +133,11 @@ class RegisterForm extends React.Component{
     return(
       <CSSTransition classNames='gateway-form-container-transition' in={this.state.mounted} timeout={500}>
         <div className='gateway-form-container' id='registration-form'>
-          <p className='gateway-form-header'>Register!</p>
+        <div className='gateway-form-header'>
+            <p className='gateway-form-header-banner'>Register!</p>
+            <p className='gateway-form-navigator' onClick={this.navigateToLogin} >Go to login</p>
+          </div>
+          {/* <p className='gateway-form-header'>Register!</p> */}
           <form onSubmit={this.handleSubmit}>
             <div className='credentials-form-row'>
               <p className='credentials-form-row-header'>E-mail</p>
@@ -154,7 +163,7 @@ class RegisterForm extends React.Component{
               <input className='submit-button' type='submit' value='Register'/>
             </div>
           </form>
-          <p className='gateway-form-navigator' onClick={this.navigateToLogin} >Login Page</p>
+          {/* <p className='gateway-form-navigator' onClick={this.navigateToLogin} >Login Page</p> */}
         </div>
       </CSSTransition>
     )

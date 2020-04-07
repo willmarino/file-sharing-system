@@ -15,10 +15,7 @@ class LoginForm extends React.Component{
         password : ''
       },
       mounted: false,
-      errorsShowing: {
-        email: false,
-        password: false
-      },
+      errorsShowing: false,
       checkErrors: false
     }
     this.checkForErrors = this.checkForErrors.bind(this);
@@ -104,23 +101,26 @@ class LoginForm extends React.Component{
     return(
       <CSSTransition classNames='gateway-form-container-transition' in={this.state.mounted} timeout={500}>
         <div className='gateway-form-container'>
-          <p className='gateway-form-header'>Login!</p>
+          <div className='gateway-form-header'>
+            <p className='gateway-form-header-banner'>Login!</p>
+            <p className='gateway-form-navigator' onClick={this.navigateToRegister} >Go to registration</p>
+          </div>
           <form onSubmit={this.handleSubmit}>
             <div className='credentials-form-row'>
               <p className='credentials-form-row-header'>E-mail</p>
               <input className='gateway-form-input' type='text' value={this.state.credentials.email} onChange={this.update('email')}/>
-              {createErrorsComponent(this.state.errors.email, this.state.errorsShowing.email)}
+              {createErrorsComponent(this.state.errors.email, this.state.errorsShowing)}
             </div>
             <div className='credentials-form-row'>
               <p className='credentials-form-row-header'>Password</p>
               <input className='gateway-form-input' type='password' value={this.state.credentials.password} onChange={this.update('password')}/>
-              {createErrorsComponent(this.state.errors.password, this.state.errorsShowing.password)}
+              {createErrorsComponent(this.state.errors.password, this.state.errorsShowing)}
             </div>
             <div className='credentials-submit-row'>
               <input className='submit-button' type='submit' value='Login'/>
             </div>
           </form>
-          <p className='gateway-form-navigator' onClick={this.navigateToRegister} >Registration Page</p>
+          {createErrorsComponent(this.props.sessionErrors, this.state.errorsShowing)}
         </div>
       </CSSTransition>
     )

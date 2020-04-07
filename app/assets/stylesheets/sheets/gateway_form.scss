@@ -1,6 +1,6 @@
 .gateway-form-container{
   height: 350px;
-  width: 300px;
+  width: 350px;
 
   display: flex;
   flex-direction: column;
@@ -17,8 +17,15 @@
 }
 
 .gateway-form-header{
-  font-size: 20px;
+
+  display: flex;
+  justify-content: space-between;
+
   padding-bottom: 20px;
+}
+
+.gateway-form-header-banner{
+  font-size: 20px;
 }
 
 .credentials-form-row-header{
@@ -35,15 +42,14 @@
 }
 
 .gateway-form-navigator{
-  line-height: 30px;
-  min-height: 30px;
-  width: 100%;
+  line-height: 20px;
+  min-height: 20px;
+  width: 120px;
 
-  border-radius: 10px;
+  border-radius: 5px;
   border: 1px solid black;
 
-  margin-top: 20px;
-
+  font-size: 12px;
   text-align: center;
 
   background: white;
@@ -55,4 +61,9 @@
   cursor: pointer;
   background: 	#F5F5F5;
   transform: scale(1.05);
+}
+
+.credentials-submit-row{
+  display: flex;
+  justify-content: center;
 }

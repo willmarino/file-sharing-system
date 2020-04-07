@@ -133,7 +133,11 @@ class RegisterForm extends React.Component{
     return(
       <CSSTransition classNames='gateway-form-container-transition' in={this.state.mounted} timeout={500}>
         <div className='gateway-form-container' id='registration-form'>
-          <p className='gateway-form-header'>Register!</p>
+        <div className='gateway-form-header'>
+            <p className='gateway-form-header-banner'>Register!</p>
+            <p className='gateway-form-navigator' onClick={this.navigateToLogin} >Go to login</p>
+          </div>
+          {/* <p className='gateway-form-header'>Register!</p> */}
           <form onSubmit={this.handleSubmit}>
             <div className='credentials-form-row'>
               <p className='credentials-form-row-header'>E-mail</p>
@@ -159,7 +163,7 @@ class RegisterForm extends React.Component{
               <input className='submit-button' type='submit' value='Register'/>
             </div>
           </form>
-          <p className='gateway-form-navigator' onClick={this.navigateToLogin} >Login Page</p>
+          {/* <p className='gateway-form-navigator' onClick={this.navigateToLogin} >Login Page</p> */}
         </div>
       </CSSTransition>
     )

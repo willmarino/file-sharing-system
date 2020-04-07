@@ -101,7 +101,10 @@ class LoginForm extends React.Component{
     return(
       <CSSTransition classNames='gateway-form-container-transition' in={this.state.mounted} timeout={500}>
         <div className='gateway-form-container'>
-          <p className='gateway-form-header'>Login!</p>
+          <div className='gateway-form-header'>
+            <p className='gateway-form-header-banner'>Login!</p>
+            <p className='gateway-form-navigator' onClick={this.navigateToRegister} >Go to registration</p>
+          </div>
           <form onSubmit={this.handleSubmit}>
             <div className='credentials-form-row'>
               <p className='credentials-form-row-header'>E-mail</p>
@@ -118,7 +121,6 @@ class LoginForm extends React.Component{
             </div>
           </form>
           {createErrorsComponent(this.props.sessionErrors, this.state.errorsShowing)}
-          <p className='gateway-form-navigator' onClick={this.navigateToRegister} >Registration Page</p>
         </div>
       </CSSTransition>
     )

@@ -104,20 +104,15 @@ class RegisterForm extends React.Component{
   }
 
   checkForErrors(field){
-    debugger;
     if(this.state.errors[field].length !== 0){
-      debugger;
       if(!this.errorTests(field)){
-        debugger;
         let errors = this.state.errors;
         errors[field] = [];
         this.setState({ errors });
       }
     }else if(this.state.errors[field].length === 0){
       let isError = this.errorTests(field);
-      debugger;
       if(isError){
-        debugger;
         let errors = this.state.errors;
         errors[field].push(isError);
         this.setState({ errors });

@@ -14,7 +14,7 @@ class UserDashboard extends React.Component{
 
   render(){
     return(
-      <div>
+      <div className='user-dashboard-container'>
         <p>this is the user dashboard</p>
         <p onClick={this.handleLogout}>working log out button</p>
       </div>

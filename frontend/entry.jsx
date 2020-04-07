@@ -7,14 +7,15 @@ document.addEventListener('DOMContentLoaded', () => {
   let store;
   let pls = {};
   if(window.currentUser){
+    let curUser = window.currentUser.user
     pls = {
       entities : {
         users : {
-
+          [curUser.id] : curUser
         }
       },
       session : {
-        currentUser : window.currentUser
+        currentUser : curUser.id
       },
       errors : {
         sessionErrors: []

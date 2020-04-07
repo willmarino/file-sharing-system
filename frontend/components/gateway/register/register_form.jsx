@@ -1,5 +1,5 @@
 import React from 'react';
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import { CSSTransition } from 'react-transition-group';
 import createErrorsComponent from '../../errors/errors_component';
 
 class RegisterForm extends React.Component{
@@ -20,7 +20,7 @@ class RegisterForm extends React.Component{
         email: ''
       },
       mounted: false,
-      errorsShowing: true,
+      errorsShowing: false,
       checkErrors: false
     }
     this.checkForErrors = this.checkForErrors.bind(this);
@@ -81,7 +81,7 @@ class RegisterForm extends React.Component{
         return 'Username must be longer than 5 characters';
       }
     }else if(field === 'confirmPassword'){
-      if(credentials.confirmPassword.length !== credentials.password){
+      if(credentials.confirmPassword !== credentials.password){
         return 'Password confirmation field must match password field'
       }
     }
@@ -104,15 +104,20 @@ class RegisterForm extends React.Component{
   }
 
   checkForErrors(field){
+    debugger;
     if(this.state.errors[field].length !== 0){
+      debugger;
       if(!this.errorTests(field)){
+        debugger;
         let errors = this.state.errors;
         errors[field] = [];
         this.setState({ errors });
       }
     }else if(this.state.errors[field].length === 0){
       let isError = this.errorTests(field);
+      debugger;
       if(isError){
+        debugger;
         let errors = this.state.errors;
         errors[field].push(isError);
         this.setState({ errors });

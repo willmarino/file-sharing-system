@@ -1,5 +1,6 @@
 import * as SessionUtil from '../util/other_util/session_util';
 import { receiveUser } from './user_actions';
+import { receiveSessionErrors } from './session_errors_actions';
 
 export const RECEIVE_SESSION = "RECEIVE_SESSION";
 export const REMOVE_SESSION = "REMOVE_SESSION";
@@ -18,6 +19,9 @@ export const loginUser = (user) => dispatch => (
     .then(res => {
       dispatch(receiveSession(res.userId));
       dispatch(receiveUser(res.user));
+    },
+    errors => {
+      dispatch(receiveSessionErrors(errors.responseJSON[0]));
     })
 );
 

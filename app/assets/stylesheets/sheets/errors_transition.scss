@@ -6,7 +6,7 @@
 .errors-transition-enter-active {
   opacity: 1;
   // transform: scale(1);
-  transition: all 750ms;
+  transition: all 1500ms;
 }
 
 .errors-transition-exit {
@@ -17,5 +17,5 @@
 .errors-transition-exit-active {
   opacity: 0;
   // transform: scale(1.1);
-  transition: all 750ms;
+  transition: all 1500ms;
 }

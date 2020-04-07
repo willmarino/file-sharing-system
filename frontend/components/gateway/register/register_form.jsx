@@ -8,10 +8,10 @@ class RegisterForm extends React.Component{
     this.state = {
       message : 'before',
       errors : {
-        usernameErrors: [],
-        emailErrors: [],
-        passwordErrors: [],
-        confirmPasswordErrors: []
+        username: [],
+        email: [],
+        password: [],
+        confirmPassword: []
       },
       credentials: {
         username: '',
@@ -20,8 +20,10 @@ class RegisterForm extends React.Component{
         email: ''
       },
       mounted: false,
-      errorsShowing: true
+      errorsShowing: true,
+      checkErrors: false
     }
+    this.checkForErrors = this.checkForErrors.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.validate = this.validate.bind(this);
     this.navigateToLogin = this.navigateToLogin.bind(this);
@@ -36,37 +38,54 @@ class RegisterForm extends React.Component{
 
   validate(){
     let errors = {
-      usernameErrors: [],
-      emailErrors: [],
-      passwordErrors: [],
-      confirmPasswordErrors: []
+      username: [],
+      email: [],
+      password: [],
+      confirmPassword: []
     };
     let input = this.state.credentials;
     if(input.username.length < 6){
-      // errors.usernameErrors.push(<li key='error1'><p>username must be longer than 5 characters</p></li>);
-      errors.usernameErrors.push('username must be longer than 5 characters');
+      errors.username.push('username must be longer than 5 characters');
     }
     if(input.password.length < 6){
-      // errors.passwordErrors.push(<li key='error2'><p>password must be longer than 5 characters</p></li>);
-      errors.passwordErrors.push('password must be longer than 5 characters');
+      errors.password.push('password must be longer than 5 characters');
     }
     if(input.password === 'password'){
-      // errors.passwordErrors.push(<li key='error3'><p>password cannot be password</p></li>);
-      errors.passwordErrors.push('password cannot be the word password');
+      errors.password.push('password cannot be the word password');
     }
     if(!input.email.includes('@')){
-      // errors.emailErrors.push(<li key='error4'><p>email must be a valid email</p></li>);
-      errors.emailErrors.push('Not a valid email');
+      errors.email.push('Not a valid email');
     }
     if(input.password !== input.confirmPassword){
-      // errors.confirmPasswordErrors.push(<li key='error5'><p>password confirmation field must match password</p></li>);
-      errors.confirmPasswordErrors.push('password confirmation field must match password field');
+      errors.confirmPassword.push('Password confirmation field must match password field');
     }
-    this.setState({ errors : errors, errorsShowing: true}, () => {
+    this.setState({ errors : errors, errorsShowing: true, checkErrors: true }, () => {
       if(Object.values(this.state.errors).every(errorsSection => errorsSection.length === 0)){
         this.props.signupUser(this.state.credentials);
       }
     });
+  }
+
+  errorTests(field){
+    let credentials = this.state.credentials;
+    if(field === 'email'){
+      if(!credentials.email.includes('@')){
+        return 'Not a valid email';
+      }
+    }else if(field === 'password'){
+      if(credentials.password.length < 6){
+        return 'Password must be longer than 5 characters';
+      }
+    }else if(field === 'username'){
+      if(credentials.username.length < 6){
+        return 'Username must be longer than 5 characters';
+      }
+    }else if(field === 'confirmPassword'){
+      if(credentials.confirmPassword.length !== credentials.password){
+        return 'Password confirmation field must match password field'
+      }
+    }
+    return false;
   }
 
   navigateToLogin(){
@@ -78,6 +97,26 @@ class RegisterForm extends React.Component{
       let credentials = this.state.credentials;
       credentials[field] = e.currentTarget.value;
       this.setState({ credentials });
+      if(this.state.checkErrors){
+        this.checkForErrors(field);
+      }
+    }
+  }
+
+  checkForErrors(field){
+    if(this.state.errors[field].length !== 0){
+      if(!this.errorTests(field)){
+        let errors = this.state.errors;
+        errors[field] = [];
+        this.setState({ errors });
+      }
+    }else if(this.state.errors[field].length === 0){
+      let isError = this.errorTests(field);
+      if(isError){
+        let errors = this.state.errors;
+        errors[field].push(isError);
+        this.setState({ errors });
+      }
     }
   }
 
@@ -94,26 +133,22 @@ class RegisterForm extends React.Component{
             <div className='credentials-form-row'>
               <p className='credentials-form-row-header'>E-mail</p>
               <input className='gateway-form-input' type='text' value={this.state.credentials.email} onChange={this.update('email')}/>
-              {/* <ul className='errors-list'>{this.state.errors.emailErrors}</ul> */}
-              {createErrorsComponent(this.state.errors.emailErrors, this.state.errorsShowing)}
+              {createErrorsComponent(this.state.errors.email, this.state.errorsShowing)}
             </div>
             <div className='credentials-form-row'>
               <p className='credentials-form-row-header'>Username</p>
               <input className='gateway-form-input' type='text' value={this.state.credentials.username} onChange={this.update('username')}/>
-              {/* <ul className='errors-list'>{this.state.errors.usernameErrors}</ul> */}
-              {createErrorsComponent(this.state.errors.usernameErrors, this.state.errorsShowing)}
+              {createErrorsComponent(this.state.errors.username, this.state.errorsShowing)}
             </div>
             <div className='credentials-form-row'>
               <p className='credentials-form-row-header'>Password</p>
               <input className='gateway-form-input' type='password' value={this.state.credentials.password} onChange={this.update('password')}/>
-              {/* <ul className='errors-list'>{this.state.errors.passwordErrors}</ul> */}
-              {createErrorsComponent(this.state.errors.passwordErrors, this.state.errorsShowing)}
+              {createErrorsComponent(this.state.errors.password, this.state.errorsShowing)}
             </div>
             <div className='credentials-form-row'>
               <p className='credentials-form-row-header'>Confirm Password</p>
               <input className='gateway-form-input' type='password' value={this.state.credentials.confirm_password} onChange={this.update('confirmPassword')}/>
-              {/* <ul className='errors-list'>{this.state.errors.confirmPasswordErrors}</ul> */}
-              {createErrorsComponent(this.state.errors.confirmPasswordErrors, this.state.errorsShowing)}
+              {createErrorsComponent(this.state.errors.confirmPassword, this.state.errorsShowing)}
             </div>
             <div className='credentials-submit-row'>
               <input className='submit-button' type='submit' value='Register'/>

@@ -21,7 +21,15 @@
 @import './sheets/gateway_page.scss';
 @import './sheets/gateway_form.scss';
 @import './sheets/registration_form.scss';
-@import './sheets/gateway_container_transitions.scss';
+@import './sheets/standard_transition.scss';
+@import './sheets/reverse_transition.scss';
 @import './sheets/errors_list.scss';
 @import './sheets/errors_transition.scss';
 @import './sheets/user_dashboard.scss';
+@import './sheets/app.scss';
+@import './sheets/header.scss';
+@import './sheets/user_block.scss';
+@import './sheets/header_action.scss';
+@import './sheets/dashboard_body.scss';
+@import './sheets/dashboard_body_main.scss';
+@import './sheets/dashboard_body_sidebar.scss';

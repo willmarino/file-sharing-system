@@ -99,7 +99,7 @@ class LoginForm extends React.Component{
 
   render(){
     return(
-      <CSSTransition classNames='gateway-form-container-transition' in={this.state.mounted} timeout={500}>
+      <CSSTransition classNames='standard-transition' in={this.state.mounted} timeout={500}>
         <div className='gateway-form-container'>
           <div className='gateway-form-header'>
             <p className='gateway-form-header-banner'>Login!</p>

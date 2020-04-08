@@ -3,7 +3,9 @@ import React from 'react';
 const FilesMain = () => {
   return(
     <div className='db-body-main'>
-      this is the filesMain component
+      <div className='db-body-header'>
+        <p>Files</p>
+      </div>
     </div>
   )
 }

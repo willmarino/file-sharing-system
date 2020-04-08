@@ -25,12 +25,12 @@ class UserDashboard extends React.Component{
 
   render(){
     return(
-      <CSSTransition classNames='reverse-transition' in={this.state.mounted} timeout={500}>
+      // <CSSTransition classNames='reverse-transition' in={this.state.mounted} timeout={500}>
         <div className='user-dashboard-container'>
-          <HeaderContainer/>
-          <DashboardBody/>
+          <HeaderContainer mounted={this.state.mounted}/>
+          <DashboardBody mounted={this.state.mounted}/>
         </div>
-      </CSSTransition>
+      // </CSSTransition>
     )
   }
 }

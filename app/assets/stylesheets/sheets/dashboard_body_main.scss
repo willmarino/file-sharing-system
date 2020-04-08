@@ -8,7 +8,21 @@
   box-sizing: border-box;
   box-shadow: 0 0 2px 1px 	#C8C8C8;
 
-  // flex: 1 1 auto;
-
   background: white;
+}
+
+.db-body-header{
+  height: 50px;
+  
+  display: flex;
+  justify-content: center;
+
+  border-bottom: 1px solid black;
+
+  margin-bottom: 15px;
+}
+
+.db-body-header > p{
+  font-size: 20px;
+  line-height: 50px;
 }

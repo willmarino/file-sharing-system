@@ -1,10 +1,15 @@
 import React from 'react';
+import { CSSTransition } from 'react-transition-group';
 
-const DashboardBodySidebar = () => {
+const DashboardBodySidebar = (props) => {
   return(
-    <div className='db-body-sidebar'>
-      db body sidebar
-    </div>
+    <CSSTransition classNames='reverse-transition' in={props.mounted} timeout={750}>
+      <div className='db-body-sidebar'>
+        <div className='db-body-header'>
+          <p>Messaging</p>
+        </div>
+      </div>
+    </CSSTransition>
   )
 }
 

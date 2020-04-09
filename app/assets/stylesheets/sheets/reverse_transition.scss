@@ -6,7 +6,7 @@
 .reverse-transition-enter-active {
   opacity: 1;
   transform: scale(1);
-  transition: all 500ms;
+  transition: all 750ms;
 }
 
 .reverse-transition-exit {
@@ -17,5 +17,5 @@
 .reverse-transition-exit-active {
   opacity: 0;
   transform: scale(0.6);
-  transition: all 500ms;
+  transition: all 750ms;
 }

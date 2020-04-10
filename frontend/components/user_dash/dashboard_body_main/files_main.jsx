@@ -9,7 +9,7 @@ class FilesMain extends React.Component{
 
   render(){
     return(
-      <CSSTransition classNames='simple-transition' timeout={500} in={this.props.shouldTransition}>
+      <CSSTransition classNames='simple-transition' timeout={1000} in={this.props.shouldTransition} appear={true}>
         <div className='db-body-main'>
           <div className='db-body-header'>
             <p>Files</p>

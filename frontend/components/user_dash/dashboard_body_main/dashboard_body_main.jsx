@@ -11,18 +11,19 @@ class DashboardBodyMain extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      shouldChildTransition: false
+      shouldTransition: false
     }
   }
 
-  componentDidUpdate(prevProps, prevState){
+  // I want to have a particular CSStransition occur not on the first render of the user dashboard (on refresh)
+  // But I do want to have it occur on subsequent frontend routing events
+  // So, if prevprops.mounted is true, then I know that the first render is behind me.
+  // If I also know that this.state.shouldTransition is false, then I know that the transition that I want to take place has not yet taken place
+  componentDidUpdate(prevProps){
     debugger;
-    if(prevProps.location.pathname !== this.props.location.pathname){
+    if(prevProps.mounted && !this.state.shouldTransition){
       debugger;
-      this.setState({ shouldChildTransition: true });
-    }else if(this.state.shouldChildTransition && prevState.shouldChildTransition){
-      debugger;
-      this.setState({ shouldChildTransition: false });
+      this.setState({shouldTransition : true});
     }
   }
 
@@ -31,8 +32,8 @@ class DashboardBodyMain extends React.Component{
     return(
       <CSSTransition classNames='reverse-transition' in={this.props.mounted} timeout={750}>
         <Switch>
-          <Route exact path='/' render={() => (<FilesMain shouldTransition={this.state.shouldChildTransition}/>)}/>
-          <Route exact path='/connect' render={() => (<ConnectMain shouldTransition={this.state.shouldChildTransition}/>)}/>
+          <Route exact path='/' render={() => (<FilesMain shouldTransition={this.state.shouldTransition && this.props.location.pathname === '/'}/>)}/>
+          <Route exact path='/connect' render={() => (<ConnectMain shouldTransition={this.state.shouldTransition && this.props.location.pathname === '/connect'}/>)}/>
         </Switch>
       </CSSTransition>
     )

@@ -20,15 +20,12 @@ class DashboardBodyMain extends React.Component{
   // So, if prevprops.mounted is true, then I know that the first render is behind me.
   // If I also know that this.state.shouldTransition is false, then I know that the transition that I want to take place has not yet taken place
   componentDidUpdate(prevProps){
-    debugger;
     if(prevProps.mounted && !this.state.shouldTransition){
-      debugger;
       this.setState({shouldTransition : true});
     }
   }
 
   render(){
-    debugger;
     return(
       <CSSTransition classNames='reverse-transition' in={this.props.mounted} timeout={750}>
         <Switch>

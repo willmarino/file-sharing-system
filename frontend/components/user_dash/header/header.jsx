@@ -1,21 +1,32 @@
 import React from 'react';
 import UserBlock from '../../user/user_block';
 import { CSSTransition } from 'react-transition-group';
+import { GoGear } from 'react-icons/go';
 
 class Header extends React.Component{
   constructor(props){
     super(props);
 
     this.state = {
-      lastClicked: null
+      lastClicked: null,
+      headerDropdownOpen: false
     }
 
     this.classNames={
       focused: 'ud-header-action-focused',
       passive: 'ud-header-action'
-    }
-
+    };
+    this.openDropdown = this.openDropdown.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
+    this.headerDropdown = (
+      <CSSTransition classNames='regular-dropdown' in={this.state.headerDropdownOpen} timeout={750}>
+        <ul className='regular-dropdown'>
+          <li onClick={this.handleLogout} className='regular-dropdown-item'>
+            <p>Logout</p>
+          </li>
+        </ul>
+      </CSSTransition>
+    );
     this.navToFiles = this.navToFiles.bind(this);
     this.navToConnect = this.navToConnect.bind(this);
   }
@@ -38,7 +49,18 @@ class Header extends React.Component{
     }
   }
 
+  openDropdown(){
+    return (e) => {
+      this.setState({
+        headerDropdownOpen: !this.state.headerDropdownOpen,
+        lastClicked: parseInt(e.currentTarget.dataset.idx)
+      });
+    }
+    
+  }
+
   render(){
+    let headerDropdown = (this.state.headerDropdownOpen && this.state.lastClicked === 2) ? this.headerDropdown : null;
     let classes = [];
     for(let i = 0; i < 3; i++){
       if(i === this.state.lastClicked){
@@ -55,8 +77,9 @@ class Header extends React.Component{
         <li className={classes[1]} onClick={this.navToConnect()} key={1} data-idx={'1'}>
           <p>connect</p>
         </li>
-        <li className={classes[2]} onClick={this.handleLogout} key={2} data-idx={'2'}>
-          <p>log out</p>
+        <li id='header-dropdown' className={classes[2]} onFocus={this.handleOnFocus} onClick={this.openDropdown()} key={2} data-idx={'2'}>
+          <GoGear/>
+          {headerDropdown}
         </li>
       </ul>);
     return(

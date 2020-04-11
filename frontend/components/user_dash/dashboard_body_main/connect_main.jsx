@@ -6,10 +6,10 @@ class ConnectMain extends React.Component{
     super(props);
   }
 
+  // the appear prop is necessary when I want a csstransition to run on initial rendering of a component
   render(){
-    debugger;
     return(
-      <CSSTransition classNames='simple-transition' timeout={1000} in={this.props.shouldTransition} appear={true}>
+      <CSSTransition classNames='simple-transition' timeout={750} in={this.props.shouldTransition} appear={true}>
         <div className='db-body-main'>
           <div className='db-body-header'>
             <p>Connect</p>

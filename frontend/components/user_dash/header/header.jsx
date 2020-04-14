@@ -17,17 +17,7 @@ class Header extends React.Component{
       passive: 'ud-header-action'
     };
 
-    this.openDropdown = this.openDropdown.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
-    // this.headerDropdown = <HeaderDropdown />;
-    // (<CSSTransition classNames='regular-dropdown' in={this.state.headerDropdownOpen} timeout={750}>
-    //     <ul className='regular-dropdown'>
-    //       <li onClick={this.handleLogout} className='regular-dropdown-item'>
-    //         <p>Logout</p>
-    //       </li>
-    //     </ul>
-    //   </CSSTransition>
-    // );
     this.navToFiles = this.navToFiles.bind(this);
     this.navToConnect = this.navToConnect.bind(this);
   }
@@ -44,12 +34,58 @@ class Header extends React.Component{
     this.props.history.push('/connect');
   }
 
-  openDropdown(){
-    
-  }
-
   render(){
-    // let headerDropdown = (this.state.headerDropdownOpen && this.state.lastClicked === 2) ? this.headerDropdown : null;
+
+    return(
+      <CSSTransition classNames='reverse-transition' in={this.props.mounted} timeout={750}>
+        <div className='ud-header-container'>
+          <UserBlock user={this.props.user}/>
+          <ul className='ud-header-buttons'>
+            <HeaderButton message='files' dropdown={false} onFocus={this.navToFiles}/>
+            <HeaderButton message='connect' dropdown={false} onFocus={this.navToConnect}/>
+            <HeaderButton message={<GoGear/>} dropdown={true} onFocus={null}/>
+          </ul>
+        </div>
+      </CSSTransition>
+    )
+  }
+}
+
+export default Header;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// let headerDropdown = (this.state.headerDropdownOpen && this.state.lastClicked === 2) ? this.headerDropdown : null;
     // let classes = [];
     // for(let i = 0; i < 3; i++){
     //   if(i === this.state.lastClicked){
@@ -71,20 +107,15 @@ class Header extends React.Component{
     //       {headerDropdown}
     //     </li>
       // </ul>);
-    return(
-      <CSSTransition classNames='reverse-transition' in={this.props.mounted} timeout={750}>
-        <div className='ud-header-container'>
-          <UserBlock user={this.props.user}/>
-          {/* {headerActions} */}
-          <ul className='ud-header-buttons'>
-            <HeaderButton message='files'/>
-            <HeaderButton message='connect'/>
-            <HeaderButton message={<GoGear/>}/>
-          </ul>
-        </div>
-      </CSSTransition>
-    )
-  }
-}
 
-export default Header;
+
+
+
+      // (<CSSTransition classNames='regular-dropdown' in={this.state.headerDropdownOpen} timeout={750}>
+    //     <ul className='regular-dropdown'>
+    //       <li onClick={this.handleLogout} className='regular-dropdown-item'>
+    //         <p>Logout</p>
+    //       </li>
+    //     </ul>
+    //   </CSSTransition>
+    // );

@@ -23,6 +23,7 @@ class RegisterForm extends React.Component{
       errorsShowing: false,
       checkErrors: false
     }
+    this.emailInputRef = React.createRef();
     this.checkForErrors = this.checkForErrors.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.validate = this.validate.bind(this);
@@ -122,6 +123,7 @@ class RegisterForm extends React.Component{
 
   componentDidMount(){
     this.setState({mounted: true});
+    this.emailInputRef.current.focus();
   }
 
   render(){
@@ -135,7 +137,7 @@ class RegisterForm extends React.Component{
           <form onSubmit={this.handleSubmit}>
             <div className='credentials-form-row'>
               <p className='credentials-form-row-header'>E-mail</p>
-              <input className='gateway-form-input' type='text' value={this.state.credentials.email} onChange={this.update('email')}/>
+              <input ref={this.emailInputRef} className='gateway-form-input' type='text' value={this.state.credentials.email} onChange={this.update('email')}/>
               {createErrorsComponent(this.state.errors.email, this.state.errorsShowing)}
             </div>
             <div className='credentials-form-row'>

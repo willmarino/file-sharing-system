@@ -1,0 +1,35 @@
+.height-transition-appear{
+  max-height: 0px;
+  opacity: 0;
+}
+
+.height-transition-appear-active{
+  opacity: 1;
+  max-height: 200px;
+  transition: all 750ms;
+}
+
+
+
+// ---------------------------------
+
+
+.height-transition-enter {
+  opacity: 0;
+  max-height: 0px;
+}
+
+.height-transition-enter-active {
+  opacity: 1;
+  max-height: 200px;
+  transition: all 750ms;
+}
+
+.height-transition-exit {
+  max-height: 200px;
+}
+
+.height-transition-exit-active {
+  max-height: 0px;
+  transition: all 750ms;
+}

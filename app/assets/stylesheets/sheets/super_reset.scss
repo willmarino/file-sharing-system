@@ -163,3 +163,16 @@ select[multiple]
 	/* Move the label to the top */
 	vertical-align:top;
 }
+
+
+
+// ------------my own custom reset code to remove blue outline from focused elements
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus,
+li:focus,
+div:focus {
+    outline: none;
+}

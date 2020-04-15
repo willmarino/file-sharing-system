@@ -31,7 +31,7 @@ class HeaderButton extends React.Component{
     let dropdown = null;
     if(this.props.dropdown){
       if(this.state.open){
-        dropdown = this.dropdown;
+        dropdown = <HeaderDropdownContainer inProp={this.state.open}/>;
       }
     }
     return(

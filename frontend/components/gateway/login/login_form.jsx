@@ -100,6 +100,7 @@ class LoginForm extends React.Component{
   }
 
   render(){
+    debugger;
     return(
       <CSSTransition classNames='standard-transition' in={this.state.mounted} timeout={500}>
         <div className='gateway-form-container'>

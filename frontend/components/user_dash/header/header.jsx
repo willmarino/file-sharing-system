@@ -8,29 +8,36 @@ class Header extends React.Component{
   constructor(props){
     super(props);
 
+    this.logoutRef = React.createRef();
+    this.filesRef = React.createRef();
+    this.connectRef = React.createRef();
+
     this.state = {
-      lastClicked: null
+      lastClicked: this.filesRef
     }
 
-    this.classNames={
-      focused: 'ud-header-action-focused',
-      passive: 'ud-header-action'
-    };
-
-    this.handleLogout = this.handleLogout.bind(this);
+    this.switchClasses = this.switchClasses.bind(this);
     this.navToFiles = this.navToFiles.bind(this);
     this.navToConnect = this.navToConnect.bind(this);
   }
 
-  handleLogout(){
-    this.props.logoutUser();
+  switchClasses(newRef){
+    return () => {
+      if(this.state.lastClicked !== newRef){
+        this.state.lastClicked.current.classList.remove('ud-header-button-focused');
+        newRef.current.classList.add('ud-header-button-focused');
+        this.setState({ lastClicked : newRef });
+      }
+    }
   }
 
   navToFiles(){
+    this.switchClasses(this.filesRef)();
     this.props.history.push('/');
   }
 
   navToConnect(){
+    this.switchClasses(this.connectRef)();
     this.props.history.push('/connect');
   }
 
@@ -41,9 +48,10 @@ class Header extends React.Component{
         <div className='ud-header-container'>
           <UserBlock user={this.props.user}/>
           <ul className='ud-header-buttons'>
-            <HeaderButton message='files' dropdown={false} onFocus={this.navToFiles}/>
-            <HeaderButton message='connect' dropdown={false} onFocus={this.navToConnect}/>
-            <HeaderButton message={<GoGear/>} dropdown={true} onFocus={null}/>
+            <HeaderButton
+              message='files' dropdown={false} navFunction={this.navToFiles} refProp={this.filesRef}/>
+            <HeaderButton message='connect' dropdown={false} navFunction={this.navToConnect} refProp={this.connectRef}/>
+            <HeaderButton message={<GoGear/>} dropdown={true} navFunction={null} refProp={this.logoutRef} switchClasses={this.switchClasses(this.logoutRef)}/>
           </ul>
         </div>
       </CSSTransition>

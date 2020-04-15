@@ -9,7 +9,7 @@ class HeaderButton extends React.Component{
       this.state = {
         open: false,
       }
-      this.dropdown = <HeaderDropdownContainer inProp={this.state.open}/>
+      this.dropdown = <HeaderDropdownContainer inProp={this.state.open}/>;
     }
 
     this.handleCloseDropdown = this.handleCloseDropdown.bind(this);
@@ -21,6 +21,7 @@ class HeaderButton extends React.Component{
   }
 
   handleClick(){
+    this.props.switchClasses();
     this.setState({ open : !this.state.open });
   }
 
@@ -34,7 +35,9 @@ class HeaderButton extends React.Component{
       }
     }
     return(
-      <li tabIndex='0' className='ud-header-button' onClick={(this.props.dropdown) ? this.handleClick : null} onBlur={(this.props.dropdown) ? this.handleCloseDropdown : null}>
+      <li tabIndex='0' className='ud-header-button' ref={this.props.refProp}
+        onClick={(this.props.dropdown) ? this.handleClick : this.props.navFunction}
+        onBlur={(this.props.dropdown) ? this.handleCloseDropdown : null}>
         <p>{this.props.message}</p>
         {dropdown}
       </li>

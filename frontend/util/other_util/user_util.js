@@ -7,3 +7,11 @@ export const signUpUser = (user) => (
     data: { user }
   })
 );
+
+export const searchForUsers = (search) => (
+  $.ajax({
+    method: "GET",
+    url: '/api/users/search',
+    data: { search }
+  })
+)

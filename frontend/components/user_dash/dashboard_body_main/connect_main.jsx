@@ -1,5 +1,6 @@
 import React from 'react';
 import { CSSTransition } from 'react-transition-group';
+import UserSearch from './user_search/user_search';
 
 class ConnectMain extends React.Component{
   constructor(props){
@@ -14,6 +15,7 @@ class ConnectMain extends React.Component{
           <div className='db-body-header'>
             <p>Connect</p>
           </div>
+          <UserSearch/>
         </div>
       </CSSTransition>
     )

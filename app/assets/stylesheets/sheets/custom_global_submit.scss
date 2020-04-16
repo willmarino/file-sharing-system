@@ -12,3 +12,17 @@
   cursor: pointer;
 
 }
+
+.small-submit-button{
+  height: 25px;
+  min-width: 50px;
+
+  padding: 5px;
+  box-sizing: border-box;
+  
+  background: white;
+}
+
+.small-submit-button:hover{
+  cursor: pointer
+}

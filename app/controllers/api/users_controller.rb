@@ -46,4 +46,22 @@ class Api::UsersController < ApplicationController
     params.require(:user).permit(:username, :email, :password, :description)
   end
 
+
+
+  # ----------------------------------------------------------------------------------------------------------------------------------------------------------
+  # everything below this line is not RESTful, these are custom routes
+
+
+  # search will iterate through all users and collect the users with usernames which match the search query
+  def search
+    query = search_params
+    @users = User.all.select { |user| user.username == query }
+    render :search
+  end
+
+  # search params will make sure the input for this route is in the form {search: {query: 'tim'}}
+  def search_params
+    params.require(:search).permit(:query)
+  end
+
 end

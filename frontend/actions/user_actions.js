@@ -31,3 +31,10 @@ export const signupUser = (user) => dispatch => (
       dispatch(receiveUserErrors(errors.responsJSON[0]));
     })
 )
+
+export const searchForUsers = (search) => dispatch => (
+  UserUtil.searchForUsers(search)
+    .then(res => {
+      dispatch(receiveUsers(res.users));
+    })
+)

@@ -1,7 +1,8 @@
 import {
   RECEIVE_USER,
   RECEIVE_USERS,
-  REMOVE_USER
+  REMOVE_USER,
+  RECEIVE_USER_IDS
 } from '../actions/user_actions';
 
 const UsersReducer = (state={}, action) => {
@@ -16,6 +17,8 @@ const UsersReducer = (state={}, action) => {
         newState[user.id] = user;
       })
       return Object.assign({}, state, newState);
+    case RECEIVE_USER_IDS:
+      return Object.assign({}, state, { [action.at] : action.ids });
     case REMOVE_USER:
       newState = Object.assign({}, state);
       delete newState[action.userId];

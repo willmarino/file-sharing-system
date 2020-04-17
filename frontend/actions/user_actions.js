@@ -4,6 +4,7 @@ import { receiveUserErrors } from './user_errors_actions';
 
 export const RECEIVE_USER = 'RECEIVE_USER';
 export const RECEIVE_USERS = 'RECEIVE_USERS';
+export const RECEIVE_USER_IDS = 'RECEIVE_USER_IDS';
 export const REMOVE_USER = 'REMOVE_USER';
 
 export const receiveUser = (user) => ({
@@ -21,6 +22,12 @@ const removeUser = (userId) => ({
   userId
 });
 
+const receiveIds = (field, ids) => ({
+  type: RECEIVE_USER_IDS,
+  at: field,
+  ids
+})
+
 export const signupUser = (user) => dispatch => (
   UserUtil.signUpUser(user)
     .then(res => {
@@ -37,5 +44,6 @@ export const searchForUsers = (search) => dispatch => (
     .then(res => {
       debugger;
       dispatch(receiveUsers(res.users));
+      dispatch(receiveIds('userSearchIds', res.users.map((user) => id)))
     })
 )

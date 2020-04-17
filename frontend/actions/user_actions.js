@@ -12,7 +12,7 @@ export const receiveUser = (user) => ({
 });
 
 const receiveUsers = (users) => ({
-  type: RECEIVE_USER,
+  type: RECEIVE_USERS,
   users
 });
 
@@ -35,6 +35,7 @@ export const signupUser = (user) => dispatch => (
 export const searchForUsers = (search) => dispatch => (
   UserUtil.searchForUsers(search)
     .then(res => {
+      debugger;
       dispatch(receiveUsers(res.users));
     })
 )

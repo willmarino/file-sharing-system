@@ -5,6 +5,7 @@ import {
 } from '../actions/user_actions';
 
 const UsersReducer = (state={}, action) => {
+  if(action.type === RECEIVE_USERS) debugger;
   Object.freeze(state);
   let newState = {};
   switch(action.type){

@@ -6,6 +6,7 @@ import { receiveSearchError } from './search_errors_actions';
 export const RECEIVE_USER = 'RECEIVE_USER';
 export const RECEIVE_USERS = 'RECEIVE_USERS';
 export const RECEIVE_USER_IDS = 'RECEIVE_USER_IDS';
+export const CLEAR_USER_IDS = 'CLEAR_USER_IDS';
 export const REMOVE_USER = 'REMOVE_USER';
 
 export const receiveUser = (user) => ({
@@ -27,6 +28,11 @@ const receiveIds = (field, ids) => ({
   type: RECEIVE_USER_IDS,
   at: field,
   ids
+});
+
+const clearIds = (field) => ({
+  type: CLEAR_USER_IDS,
+  at: field
 })
 
 export const signupUser = (user) => dispatch => (
@@ -48,6 +54,7 @@ export const searchForUsers = (search) => dispatch => (
       dispatch(receiveIds('userSearchIds', res.users.map((user) => user.id)))
     },
     errors => {
+      dispatch(clearIds('userSearchIds'));
       dispatch(receiveSearchError(errors.responseJSON[0]));
     })
 )

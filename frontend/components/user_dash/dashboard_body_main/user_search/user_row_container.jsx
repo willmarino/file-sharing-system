@@ -2,9 +2,12 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import UserRow from './user_row';
 
-const msp = (ownProps) => ({
-  user: ownProps.user
-})
+const msp = (state, ownProps) => {
+  debugger;
+  return({
+    user: ownProps.user,
+  })
+}
 
 const mdp = (dispatch) => ({
 

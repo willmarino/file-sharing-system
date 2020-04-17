@@ -1,6 +1,7 @@
 import * as UserUtil from '../util/other_util/user_util';
 import { receiveSession } from './session_actions';
 import { receiveUserErrors } from './user_errors_actions';
+import { receiveSearchError } from './search_errors_actions';
 
 export const RECEIVE_USER = 'RECEIVE_USER';
 export const RECEIVE_USERS = 'RECEIVE_USERS';
@@ -44,6 +45,9 @@ export const searchForUsers = (search) => dispatch => (
     .then(res => {
       debugger;
       dispatch(receiveUsers(res.users));
-      dispatch(receiveIds('userSearchIds', res.users.map((user) => id)))
+      dispatch(receiveIds('userSearchIds', res.users.map((user) => user.id)))
+    },
+    errors => {
+      dispatch(receiveSearchError(errors.responseJSON[0]));
     })
 )

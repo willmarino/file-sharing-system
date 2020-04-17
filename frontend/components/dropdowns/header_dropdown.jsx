@@ -13,7 +13,6 @@ class HeaderDropdown extends React.Component{
   }
 
   render(){
-    debugger;
     return(
       <CSSTransition classNames='height-transition' in={this.props.inProp} timeout={750}>
         <ul className='regular-dropdown'>

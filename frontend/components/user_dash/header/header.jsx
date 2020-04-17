@@ -33,13 +33,10 @@ class Header extends React.Component{
   }
 
   setInitialClass(){
-    debugger;
     if(!this.state.highLighted && this.filesRef.current){
-      debugger;
       this.filesRef.current.classList.add('ud-header-button-focused');
       this.setState({ highLighted : true });
     }
-    debugger;
   }
 
   navToFiles(){

@@ -8,10 +8,13 @@ export const signUpUser = (user) => (
   })
 );
 
-export const searchForUsers = (search) => (
-  $.ajax({
-    method: "GET",
-    url: '/api/users/search',
-    data: { search }
-  })
-)
+export const searchForUsers = (search) => {
+  debugger;
+  return(
+    $.ajax({
+      method: "GET",
+      url: '/api/users/search',
+      data: { search }
+    })
+  )
+}

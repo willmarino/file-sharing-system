@@ -19,6 +19,7 @@ class SearchHeader extends React.Component{
   }
 
   render(){
+    debugger;
     return(
       <div className='search-header-container'>
         <form className='user-search-form' onSubmit={this.handleSubmit}>

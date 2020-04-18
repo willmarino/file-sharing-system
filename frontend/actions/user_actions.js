@@ -49,7 +49,6 @@ export const signupUser = (user) => dispatch => (
 export const searchForUsers = (search) => dispatch => (
   UserUtil.searchForUsers(search)
     .then(res => {
-      debugger;
       dispatch(receiveUsers(res.users));
       dispatch(receiveIds('userSearchIds', res.users.map((user) => user.id)))
     },

@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import UserRow from './user_row';
 
 const msp = (state, ownProps) => {
-  debugger;
   return({
     user: ownProps.user,
   })

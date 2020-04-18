@@ -6,7 +6,6 @@ const SearchResult = (props) => {
     return <p>{props.error}</p>
   }
   let users = props.users.userSearchIds.map((id) => props.users[id]);
-  debugger;
   return(
     <ul>
       {users.map((user) => <UserRowContainer user={user}/>)}

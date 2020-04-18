@@ -2,7 +2,6 @@ import React from 'react';
 import { IoMdPerson } from 'react-icons/io';
 
 const UserRow = (props) => {
-  debugger;
   let avatar = (props.user.photoURL === 'default') ? <IoMdPerson/> : <img src={props.user.photoURL} alt=""/>
   return(
     <div className='search-result-row'>

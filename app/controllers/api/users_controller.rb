@@ -54,11 +54,13 @@ class Api::UsersController < ApplicationController
 
   # search will iterate through all users and collect the users with usernames which match the search query
   def search
-    debugger
     query = search_params['query']
     @users = User.all.select { |user| user.username == query }
-    debugger
-    render :search
+    if !@users.empty?
+      render :search
+    else
+      render json: ['That search returned no users'], status: 400
+    end
   end
 
   # search params will make sure the input for this route is in the form {search: {query: 'tim'}}

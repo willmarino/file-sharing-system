@@ -8,13 +8,13 @@
 
 User.destroy_all
 
-User.create!(description: 'this is the description part!', email: 'greg@mail.com', username: 'greg', password: 'gregspassword' );
-User.create!(description: 'this is the description part!', email: 'bob@mail.com', username: 'bob', password: 'bobspassword' );
-User.create!(description: 'this is the description part!', email: 'jim@mail.com', username: 'jim', password: 'jimspassword' );
-User.create!(description: 'this is the description part!', email: 'oscar@mail.com', username: 'oscar', password: 'oscarspassword' );
-User.create!(description: 'this is the description part!', email: 'anita@mail.com', username: 'anita', password: 'anitaspassword' );
-User.create!(description: 'this is the description part!', email: 'kevin@mail.com', username: 'kevin', password: 'kevinspassword' );
-User.create!(description: 'this is the description part!', email: 'cheryl@mail.com', username: 'cheryl', password: 'cherylspassword' );
-User.create!(description: 'this is the description part!', email: 'pam@mail.com', username: 'pam', password: 'pamspassword' );
-User.create!(description: 'this is the description part!', email: 'mike@mail.com', username: 'mike', password: 'mikespassword' );
-User.create!(description: 'this is the description part!', email: 'lana@mail.com', username: 'lana', password: 'lanaspassword' );
+u1 = User.create!(description: 'this is the description part!', email: 'greg@mail.com', username: 'greg', password: 'gregspassword', photoURL: 'default' );
+u2 = User.create!(description: 'this is the description part!', email: 'bob@mail.com', username: 'bob', password: 'bobspassword', photoURL: 'default' );
+u3 = User.create!(description: 'this is the description part!', email: 'jim@mail.com', username: 'jim', password: 'jimspassword', photoURL: 'default' );
+u4 = User.create!(description: 'this is the description part!', email: 'oscar@mail.com', username: 'oscar', password: 'oscarspassword', photoURL: 'default' );
+u5 = User.create!(description: 'this is the description part!', email: 'anita@mail.com', username: 'anita', password: 'anitaspassword', photoURL: 'default' );
+u6 = User.create!(description: 'this is the description part!', email: 'kevin@mail.com', username: 'kevin', password: 'kevinspassword', photoURL: 'default' );
+u7 = User.create!(description: 'this is the description part!', email: 'cheryl@mail.com', username: 'cheryl', password: 'cherylspassword', photoURL: 'default' );
+u8 = User.create!(description: 'this is the description part!', email: 'pam@mail.com', username: 'pam', password: 'pamspassword', photoURL: 'default' );
+u9 = User.create!(description: 'this is the description part!', email: 'mike@mail.com', username: 'mike', password: 'mikespassword', photoURL: 'default' );
+u10 = User.create!(description: 'this is the description part!', email: 'lana@mail.com', username: 'lana', password: 'lanaspassword', photoURL: 'default' );

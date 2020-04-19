@@ -1,4 +1,5 @@
 import React from 'react';
+import HeaderDropdownContainer from '../dropdowns/header_dropdown_container';
 
 class HeaderDropdownButton extends React.Component{
   constructor(props){
@@ -6,6 +7,7 @@ class HeaderDropdownButton extends React.Component{
     this.state = {
       open: false
     }
+    this.dropdown = <HeaderDropdownContainer/>;
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -14,14 +16,17 @@ class HeaderDropdownButton extends React.Component{
   }
 
   render(){
+    let dropdown = null;
     let manualClassList = 'ud-header-action';
     if(this.state.open){
       manualClassList += ' ud-header-action-focused';
+      dropdown = this.dropdown;
     }
     return(
       <div onClick={this.handleClick} className={manualClassList}>
         {this.props.display}
-        {this.props.dropdown}
+        {dropdown}
+        {/* {this.props.dropdown} */}
       </div>
     )
   }

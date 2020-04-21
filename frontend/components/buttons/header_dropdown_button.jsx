@@ -1,5 +1,6 @@
 import React from 'react';
 import HeaderDropdownContainer from '../dropdowns/header_dropdown_container';
+import { GoGear } from 'react-icons/go';
 
 class HeaderDropdownButton extends React.Component{
   constructor(props){
@@ -17,14 +18,15 @@ class HeaderDropdownButton extends React.Component{
 
   render(){
     let dropdown = null;
-    let manualClassList = 'ud-header-action';
+    let manualClassList = 'ud-header-button';
     if(this.state.open){
-      manualClassList += ' ud-header-action-focused';
+      manualClassList += ' ud-header-button-focused';
       dropdown = this.dropdown;
     }
     return(
       <div onClick={this.handleClick} className={manualClassList}>
-        {this.props.display}
+        {/* {this.props.display} */}
+        < GoGear />
         {dropdown}
         {/* {this.props.dropdown} */}
       </div>

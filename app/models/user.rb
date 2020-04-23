@@ -51,6 +51,18 @@ class User < ApplicationRecord
   def reset_session_token!
     self.update(session_token: User.generate_session_token)
   end
+  
+  # each user will be responsible for x number of sent out friend requests
+  has_many :sent_friend_requests,
+    class_name: 'FriendRequest',
+    primary_key: :id,
+    foreign_key: :sender_id
+
+  # each user will be responsible for y number of received friend requests
+  has_many :received_friend_requests,
+    class_name: 'FriendRequest',
+    primary_key: :id,
+    foreign_key: :receiver_id
 
 
 end

@@ -10,7 +10,6 @@ class FriendRequestButton extends React.Component{
 
   handleClick(e){
     // e.preventDefault();
-    // 
   }
 
   render(){

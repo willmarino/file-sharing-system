@@ -14,7 +14,7 @@ class HeaderDropdown extends React.Component{
 
   render(){
     return(
-      <CSSTransition classNames='height-transition' in={this.props.inProp} timeout={750}>
+      // <CSSTransition classNames='height-transition' in={this.props.inProp} timeout={750}>
         <ul className='regular-dropdown'>
           <li onClick={this.handleLogout} className='regular-dropdown-item'>
             <p>Logout</p>
@@ -29,7 +29,7 @@ class HeaderDropdown extends React.Component{
             <p>Sample 3</p>
           </li>
         </ul>
-      </CSSTransition>
+      // </CSSTransition>
     )
   }
 }

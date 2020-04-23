@@ -1,7 +1,6 @@
 import React from 'react';
 import UserBlock from '../../user/user_block';
 import { CSSTransition } from 'react-transition-group';
-// import HeaderButton from './header_button';
 import NavButtonContainer from '../../buttons/nav_button_container';
 import HeaderDropdownButton from '../../buttons/header_dropdown_button'
 

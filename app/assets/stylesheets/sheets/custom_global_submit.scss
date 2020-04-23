@@ -15,10 +15,12 @@
 
 .small-submit-button{
   height: 25px;
-  min-width: 50px;
+  max-width: 30px;
 
   padding: 5px;
   box-sizing: border-box;
+
+  margin-left: 10px;
   
   background: white;
 }

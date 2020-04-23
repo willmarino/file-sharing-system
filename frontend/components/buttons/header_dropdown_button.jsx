@@ -1,6 +1,7 @@
 import React from 'react';
 import HeaderDropdownContainer from '../dropdowns/header_dropdown_container';
 import { GoGear } from 'react-icons/go';
+import { CSSTransition } from 'react-transition-group';
 
 class HeaderDropdownButton extends React.Component{
   constructor(props){
@@ -8,7 +9,11 @@ class HeaderDropdownButton extends React.Component{
     this.state = {
       open: false
     }
-    this.dropdown = <HeaderDropdownContainer/>;
+    this.dropdown = (
+    <CSSTransition in={this.state.open} timeout={750} classNames='height-transition'>
+      <HeaderDropdownContainer/>
+    </CSSTransition>
+    )
     this.handleClick = this.handleClick.bind(this);
   }
 

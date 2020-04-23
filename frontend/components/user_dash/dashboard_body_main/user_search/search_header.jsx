@@ -14,7 +14,8 @@ class SearchHeader extends React.Component{
     this.setState({ query : e.currentTarget.value });
   }
 
-  handleSubmit(){
+  handleSubmit(e){
+    e.preventDefault();
     this.props.searchForUsers({query: this.state.query})
   }
 
@@ -23,7 +24,7 @@ class SearchHeader extends React.Component{
       <div className='search-header-container'>
         <form className='user-search-form' onSubmit={this.handleSubmit}>
           <input type="text" onChange={this.updateQuery} value={this.state.query}/>
-          <input type="submit" className='small-submit-button'/>
+          <input type="submit" className='small-submit-button' value='>'/>
         </form>
       </div>
     )

@@ -1,0 +1,16 @@
+.search-result-row{
+  height: 65px;
+
+  display: flex;
+
+  border: 1px solid black;
+  box-sizing: border-box;
+}
+
+.search-result-row > p{
+  line-height: 65px;
+}
+
+#user-row-username{
+  margin-right: 50px;
+}

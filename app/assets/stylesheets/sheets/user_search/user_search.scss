@@ -3,7 +3,6 @@
   max-height: 100%;
   // display: flex;
   flex: 1 1 auto;
-  background: gray;
 
   padding-top: 15px;
   // box-sizing: border-box;
@@ -12,5 +11,11 @@
 .search-header-container{
   display: flex;
   justify-content: center;
-  padding-left: 50px;
+  padding-left: 40px;
+}
+
+.search-result-container{
+  padding: 20px 10px 10px 10px;
+  display: flex;
+  flex-direction: column;
 }

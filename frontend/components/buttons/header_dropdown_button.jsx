@@ -24,11 +24,9 @@ class HeaderDropdownButton extends React.Component{
       dropdown = this.dropdown;
     }
     return(
-      <div onClick={this.handleClick} className={manualClassList}>
-        {/* {this.props.display} */}
-        < GoGear />
+      <div tabIndex='0' onClick={this.handleClick} className={manualClassList} onBlur={() => {this.setState({ open: false })}}>
+        <GoGear/>
         {dropdown}
-        {/* {this.props.dropdown} */}
       </div>
     )
   }

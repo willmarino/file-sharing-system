@@ -8,7 +8,7 @@ const SearchResult = (props) => {
   let users = props.users.userSearchIds.map((id) => props.users[id]);
   return(
     <ul className='search-result-container'>
-      {users.map((user) => <UserRowContainer user={user}/>)}
+      {users.map((user) => <UserRowContainer user={user} key={user.username}/>)}
     </ul>
   )
 }

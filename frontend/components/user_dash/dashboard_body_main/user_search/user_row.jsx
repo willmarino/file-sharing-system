@@ -7,7 +7,9 @@ const UserRow = (props) => {
   return(
     <div className='search-result-row'>
       {avatar}
-      <p id='user-row-username'>{props.user.username}</p>
+      <div id='user-row-username-container'>
+        <p>{props.user.username}</p>
+      </div>
       <p>{props.user.description}</p>
     </div>
   )

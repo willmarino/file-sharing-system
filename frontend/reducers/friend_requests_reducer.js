@@ -10,7 +10,13 @@ const FriendRequestReducer = (state={}, action) => {
   let newState;
   switch(action.type){
     case RECEIVE_FRIEND_REQUEST:
-      return Object.assign({}, state, { [action.fr.id] : action.fr });
+      if(state.sent){
+        newState = state.sent;
+      }else{
+        newState = {};
+      }
+      newState[action.fr.receiver_id] = action.fr;
+      return Object.assign({}, state, newState);
     case REMOVE_FRIEND_REQUEST:
       newState = Object.assign({}, state);
       delete newState.frId;
@@ -18,7 +24,7 @@ const FriendRequestReducer = (state={}, action) => {
     case RECEIVE_FRIEND_REQUESTS:
       newState = {};
       action.frs.forEach((fr) => {
-        newState[fr.id] = fr;
+        (action.key === 'sent') ? newState[fr.receiver_id] = fr : newState[fr.sender_id] = fr;
       });
       return Object.assign({}, state, { [action.key] : newState });
     case RECEIVE_FETCHED_STATUS:

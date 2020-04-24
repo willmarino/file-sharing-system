@@ -5,7 +5,8 @@ import { createFriendRequest, respondToFriendRequest } from '../../../actions/fr
 
 const msp = (state, ownProps) => ({
   userId: ownProps.userId,
-  friendRequests: state.entities.friendRequests
+  friendRequests: state.entities.friendRequests,
+  currentUser: state.entities.users[state.session.currentUser]
 });
 
 const mdp = (dispatch) => ({

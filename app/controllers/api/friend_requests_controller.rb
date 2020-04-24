@@ -4,8 +4,10 @@ class Api::FriendRequestsController < ApplicationController
     render :show
   end
   def index
-    @sent_frs = FriendRequest.find_by(sender_id: current_user.id)
-    @received_frs = FriendRequest.find_by(receiver_id: current_user.id)
+    @sent_frs = FriendRequest.where("sender_id = #{current_user.id}")
+    @received_frs = FriendRequest.where("receiver_id = #{current_user.id}")
+    # @sent_frs = FriendRequest.find_by(sender_id: current_user.id)
+    # @received_frs = FriendRequest.find_by(receiver_id: current_user.id)
     render :index
   end
   # respond should be grabbing the fr using the id sent back in params,

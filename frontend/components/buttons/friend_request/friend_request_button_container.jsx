@@ -1,15 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import FriendRequestButton from './friend_request_button';
-import { createFriendRequest } from '../../../actions/friend_request_actions';
+import { createFriendRequest, respondToFriendRequest } from '../../../actions/friend_request_actions';
 
 const msp = (state, ownProps) => ({
-  curUser: state.session.currentUser,
-  userId: ownProps.userId
+  userId: ownProps.userId,
+  friendRequests: state.entities.friendRequests
 });
 
 const mdp = (dispatch) => ({
-  createFriendRequest: (info) => dispatch(createFriendRequest(info))
+  createFriendRequest: (id) => dispatch(createFriendRequest(id)),
+  respondToFriendRequest: (info) => dispatch(respondToFriendRequest(info))
 });
 
 export default connect(msp, mdp)(FriendRequestButton);

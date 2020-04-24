@@ -11,7 +11,9 @@ class SearchResult extends React.Component{
   }
 
   render(){
-  // if()
+  if(!this.props.friendRequests.fetched){
+    return <p></p>;
+  }
   if(!this.props.users.userSearchIds){
     return <p>{this.props.error}</p>
   }

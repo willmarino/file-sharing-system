@@ -4,7 +4,8 @@ import { fetchFriendRequests } from '../../../../actions/friend_request_actions'
 
 const msp = (state) => ({
   users: state.entities.users,
-  error: state.errors.searchErrors[0]
+  error: state.errors.searchErrors[0],
+  friendRequests: state.entities.friendRequests
 });
 
 const mdp = (dispatch) => ({

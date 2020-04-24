@@ -10,7 +10,6 @@ class Header extends React.Component{
   }
 
   render(){
-    debugger;
     return(
       <CSSTransition classNames='reverse-transition' in={this.props.mounted} timeout={750}>
         <div className='ud-header-container'>

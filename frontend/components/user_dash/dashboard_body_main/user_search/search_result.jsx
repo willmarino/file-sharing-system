@@ -1,16 +1,28 @@
 import React from 'react';
 import UserRowContainer from './user_row_container';
 
-const SearchResult = (props) => {
-  if(!props.users.userSearchIds){
-    return <p>{props.error}</p>
+class SearchResult extends React.Component{
+  constructor(props){
+    super(props);
   }
-  let users = props.users.userSearchIds.map((id) => props.users[id]);
+
+  componentDidMount(){
+    this.props.fetchFriendRequests();
+  }
+
+  render(){
+  if(!this.props.friendRequests.fetched){
+    return <p></p>;
+  }
+  if(!this.props.users.userSearchIds){
+    return <p>{this.props.error}</p>
+  }
+  let users = this.props.users.userSearchIds.map((id) => this.props.users[id]);
   return(
     <ul className='search-result-container'>
-      {users.map((user) => <UserRowContainer user={user}/>)}
+      {users.map((user) => <UserRowContainer user={user} key={user.username}/>)}
     </ul>
-  )
+  )}
 }
 
 export default SearchResult;

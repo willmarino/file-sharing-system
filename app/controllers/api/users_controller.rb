@@ -55,7 +55,8 @@ class Api::UsersController < ApplicationController
   # search will iterate through all users and collect the users with usernames which match the search query
   def search
     query = search_params['query']
-    @users = User.all.select { |user| user.username == query }
+    # @users = User.all.select { |user| user.username == query }
+    @users = User.all.select { |user| user.username.start_with?(query) }
     if !@users.empty?
       render :search
     else

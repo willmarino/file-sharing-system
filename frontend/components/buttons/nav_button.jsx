@@ -12,7 +12,6 @@ class NavButton extends React.Component{
   }
 
   render(){
-    debugger;
     let { history, route } = this.props;
     let manualClassList = 'ud-header-button';
     if(route === history.location.pathname){

@@ -18,3 +18,4 @@ u7 = User.create!(description: 'this is the description part!', email: 'cheryl@m
 u8 = User.create!(description: 'this is the description part!', email: 'pam@mail.com', username: 'pam', password: 'pamspassword', photoURL: 'default' );
 u9 = User.create!(description: 'this is the description part!', email: 'mike@mail.com', username: 'mike', password: 'mikespassword', photoURL: 'default' );
 u10 = User.create!(description: 'this is the description part!', email: 'lana@mail.com', username: 'lana', password: 'lanaspassword', photoURL: 'default' );
+u11 = User.create!(description: 'this is the description part!', email: 'lisa@mail.com', username: 'lisa', password: 'lisaspassword', photoURL: 'default' );

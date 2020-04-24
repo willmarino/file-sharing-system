@@ -1,0 +1,2 @@
+ - going to try to implement a more organized way of checking whether fetched information is in redux state (for conditional renders)
+ - solving the null/nil res data problem by adding logic to the pojo action dispatches in my thunk actions

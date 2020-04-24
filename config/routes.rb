@@ -10,10 +10,17 @@ Rails.application.routes.draw do
         get 'search'
       end
     end
-    
+
     # restful routing for session, we will only need to create or destroy sessions (login, logout)
     resource :session, only: [:create, :destroy]
 
+    # for friend requests, I will need to create a request, delete them when a user has responded to them,
+    # and return an index of them per user ('show me all of my friend requests')
+    resources :friend_requests, only: [:create, :index] do 
+      member do
+        post 'respond'
+      end
+    end
 
 
   end

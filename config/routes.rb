@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
     # for friend requests, I will need to create a request, delete them when a user has responded to them,
     # and return an index of them per user ('show me all of my friend requests')
-    resource :friend_requests, only: [:create, :index] do 
+    resources :friend_requests, only: [:create, :index] do 
       member do
         post 'respond'
       end

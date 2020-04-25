@@ -1,1 +1,2 @@
-json.frId @fr.id
+json.frId @fr.sender_id
+json.user @receiver

@@ -18,7 +18,9 @@ class Api::FriendRequestsController < ApplicationController
   def respond
     @fr = FriendRequest.find(params[:id])
     if params[:info][:resp]
-      users = [ User.find(@fr.sender_id), User.find(@fr.receiver_id) ]
+      sender, @receiver = User.find(@fr.sender_id), User.find(@fr.receiver_id)
+      users = [ sender, @receiver ]
+      # users = [ User.find(@fr.sender_id), User.find(@fr.receiver_id) ]
       (0...users.length).each { |i| users[i].update_attributes(friends: users[i].friends.push(users[i - 1].id)) }
     end
     @fr.destroy

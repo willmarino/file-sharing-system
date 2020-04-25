@@ -1,4 +1,5 @@
 import * as FRUtil from '../util/other_util/friend_request_util';
+import { receiveUser } from './user_actions';
 
 export const RECEIVE_FRIEND_REQUEST = 'RECEIVE_FRIEND_REQUEST';
 export const RECEIVE_FRIEND_REQUESTS = 'RECEIVE_FRIEND_REQUESTS';
@@ -50,5 +51,6 @@ export const respondToFriendRequest = (info) => (dispatch) => {
   FRUtil.respondToFriendRequest(info)
     .then(res => {
       dispatch(removeFriendRequest(res.frId));
+      dispatch(receiveUser(res.user));
     })
 };

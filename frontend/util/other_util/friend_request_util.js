@@ -20,7 +20,7 @@ export const createFriendRequest = (id) => (
 export const respondToFriendRequest = (info) => (
   $.ajax({
     method: 'POST',
-    url: `api/friend_requests/respond/${info.id}`,
+    url: `api/friend_requests/${info.id}/respond`,
     data: {info}
   })
 );

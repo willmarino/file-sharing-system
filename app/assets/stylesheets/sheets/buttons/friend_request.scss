@@ -1,0 +1,16 @@
+.frb-container{
+  height: 40px;
+  width: 40px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 20px;
+
+  transition: all .3s;
+}
+
+.frb-container:hover{
+  box-shadow: 0 0 1px 1px #343434;
+}

@@ -4,6 +4,7 @@ import { receiveSessionErrors } from './session_errors_actions';
 
 export const RECEIVE_SESSION = "RECEIVE_SESSION";
 export const REMOVE_SESSION = "REMOVE_SESSION";
+export const CLEAR_ALL = "CLEAR_ALL";
 
 export const receiveSession = (userId) => ({
   type: RECEIVE_SESSION,
@@ -12,6 +13,10 @@ export const receiveSession = (userId) => ({
 
 const removeSession = () => ({
   type: REMOVE_SESSION
+});
+
+const clearAll = () => ({
+  type: CLEAR_ALL
 });
 
 export const loginUser = (user) => dispatch => (
@@ -29,5 +34,6 @@ export const logoutUser = () => dispatch => (
   SessionUtil.logoutUser()
     .then(() => {
       dispatch(removeSession());
+      dispatch(clearAll());
     })
 );

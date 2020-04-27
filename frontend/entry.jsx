@@ -5,22 +5,31 @@ import configureStore from './store/store';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
-  let pls = {};
+  let pls = {
+    entities : {
+      users: {
+
+      },
+      friendRequests: {
+        received: {
+
+        },
+        sent: {
+
+        }
+      }
+    },
+    session: {
+      currentUser : null
+    },
+    errors: {
+      sessionErrors: []
+    }
+  };
   if(window.currentUser){
     let curUser = window.currentUser.user
-    pls = {
-      entities : {
-        users : {
-          [curUser.id] : curUser
-        }
-      },
-      session : {
-        currentUser : curUser.id
-      },
-      errors : {
-        sessionErrors: []
-      }
-    }
+    pls.session.currentUser = curUser.id;
+    pls.entities.users = { [curUser.id] : curUser };
   }
 
   const root = document.getElementById('root');

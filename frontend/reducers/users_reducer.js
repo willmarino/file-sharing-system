@@ -5,6 +5,7 @@ import {
   RECEIVE_USER_IDS,
   CLEAR_USER_IDS
 } from '../actions/user_actions';
+import { CLEAR_ALL } from '../actions/session_actions';
 
 const UsersReducer = (state={}, action) => {
   Object.freeze(state);
@@ -27,6 +28,8 @@ const UsersReducer = (state={}, action) => {
       newState = Object.assign({}, state);
       delete newState[action.userId];
       return newState;
+    case CLEAR_ALL:
+      return {};
     default:
       return state;
   }

@@ -1,9 +1,11 @@
 
 
-export const CreateUserFile = (info) => (
+export const createUserFile = (info) => (
   $.ajax({
     method: "POST",
     url: "/api/user_files",
-    data: {info}
+    data: {info},
+    contentType: false,
+    processData: false
   })
 );

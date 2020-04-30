@@ -1,5 +1,6 @@
 import React from 'react';
 import { CSSTransition } from 'react-transition-group';
+import FileUploadFormContainer from '../../forms/file_upload_form_container';
 
 class FilesMain extends React.Component{
   constructor(props){
@@ -13,6 +14,7 @@ class FilesMain extends React.Component{
         <div className='db-body-main'>
           <div className='db-body-header'>
             <p>Files</p>
+            <FileUploadFormContainer/>
           </div>
         </div>
       </CSSTransition>

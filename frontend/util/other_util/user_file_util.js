@@ -1,5 +1,4 @@
 export const createUserFile = (info) => {
-  debugger;
   return(
     $.ajax({
       method: "POST",

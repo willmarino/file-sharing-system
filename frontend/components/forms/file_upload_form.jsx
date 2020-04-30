@@ -43,7 +43,6 @@ class FileUploadForm extends React.Component{
     }
   }
   render(){
-    debugger;
     return(
       <form onSubmit={this.handleSubmit} className='file-upload-form-container'>
         <input type="file" onChange={this.handleUpload}/> 

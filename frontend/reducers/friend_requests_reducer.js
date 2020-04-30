@@ -7,7 +7,6 @@ import {
 import { CLEAR_ALL } from '../actions/session_actions';
 
 const FriendRequestReducer = (state={}, action) => {
-  if(action.type === REMOVE_FRIEND_REQUEST) debugger;
   Object.freeze(state);
   let newState;
   switch(action.type){

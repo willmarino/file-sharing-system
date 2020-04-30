@@ -33,7 +33,6 @@ class FileUploadForm extends React.Component{
       that.setState({ userFile });
     }
     fileReader.readAsDataURL(file);
-    debugger;
   }
   update(field){
     return e => {

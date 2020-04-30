@@ -20,6 +20,7 @@ class FileUploadForm extends React.Component{
     formData.append('file', this.state.userFile.file);
     formData.append('name', this.state.userFile.name);
     formData.append('description', this.state.userFile.description);
+    this.props.createUserFile(formData)
   }
   handleUpload(e){
     const fileReader = new FileReader();
@@ -31,7 +32,6 @@ class FileUploadForm extends React.Component{
       this.setState({ userFile });
     }
     fileReader.readAsDataURL(file);
-    
   }
   update(field){
     return e => {

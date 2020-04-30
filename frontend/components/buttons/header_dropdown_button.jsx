@@ -10,7 +10,7 @@ class HeaderDropdownButton extends React.Component{
       open: false
     }
     this.dropdown = (
-    <CSSTransition in={this.state.open} timeout={750} classNames='height-transition'>
+    <CSSTransition in={this.state.open} timeout={750} classNames='height-transition' appear={true}>
       <HeaderDropdownContainer/>
     </CSSTransition>
     )

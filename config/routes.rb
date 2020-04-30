@@ -22,11 +22,8 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :user_files, only: [:create] do
-      
-    end
-
-
+    resources :user_files, only: [:create, :show, :index]
+    
   end
 
 end

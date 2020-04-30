@@ -5,7 +5,7 @@ const DashboardBodySidebar = (props) => {
   return(
     <CSSTransition classNames='reverse-transition' in={props.mounted} timeout={750}>
       <div className='db-body-sidebar'>
-        <div className='db-body-header'>
+        <div className='db-body-header' id='center-header'>
           <p>Messaging</p>
         </div>
       </div>

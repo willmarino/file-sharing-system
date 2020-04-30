@@ -12,7 +12,7 @@ class FileUploadForm extends React.Component{
       status: null
     }
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handlUpload = this.handlUpload.bind(this);
+    this.handleUpload = this.handleUpload.bind(this);
   }
   handleSubmit(e){
     e.preventDefault();
@@ -21,7 +21,7 @@ class FileUploadForm extends React.Component{
     formData.append('name', this.state.userFile.name);
     formData.append('description', this.state.userFile.description);
   }
-  handlUpload(e){
+  handleUpload(e){
     const fileReader = new FileReader();
     let file = e.currentTarget.files[0];
     fileReader.onloadend = () => {
@@ -31,18 +31,19 @@ class FileUploadForm extends React.Component{
       this.setState({ userFile });
     }
     fileReader.readAsDataURL(file);
+    
   }
   update(field){
     return e => {
-
+      this.setState({ [field] : e.currentTarget.value });
     }
   }
   render(){
     return(
       <form onSubmit={this.handleSubmit} className='file-upload-form-container'>
-        <input type="file"/> 
-        <input type="text"/>
-        <input type="text"/>
+        <input type="file" onChange={this.handleUpload}/> 
+        <input type="text" onChange={this.update('name')} value={this.state.name}/>
+        <input type="text" onChange={this.update('description')} value={this.state.description}/>
         <input type="submit"/>
       </form>
     )

@@ -39,7 +39,6 @@ class FileUploadForm extends React.Component{
       let userFile = this.state.userFile;
       userFile[field] = e.currentTarget.value;
       this.setState({ userFile });
-      // this.setState({ [field] : e.currentTarget.value });
     }
   }
   render(){

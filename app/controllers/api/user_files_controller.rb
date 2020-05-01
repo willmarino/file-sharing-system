@@ -7,7 +7,12 @@ class Api::UserFilesController < ApplicationController
 
   def show
     file = UserFile.find(params[:id])
-    # 
+    
+  end
+
+  def index
+    @files = UserFile.where("owner_id = #{current_user.id}")
+    render :index
   end
 
   def file_params

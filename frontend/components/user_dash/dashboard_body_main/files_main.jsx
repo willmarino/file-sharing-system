@@ -2,6 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 import FileUploadFormContainer from '../../forms/file_upload_form_container';
+import FilesDisplayContainer from './files_main/files_display_container';
 
 class FilesMain extends React.Component{
   constructor(props){
@@ -30,7 +31,7 @@ class FilesMain extends React.Component{
             </div>
           </div>
           <div className='db-body-body'>
-            <Route exact path='/display'/>
+            <Route exact path='/display' component={FilesDisplayContainer}/>
             <Route exact path='/add' component={FileUploadFormContainer}/>
           </div>
         </div>

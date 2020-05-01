@@ -4,7 +4,7 @@ import { receiveUser } from './user_actions';
 export const RECEIVE_FRIEND_REQUEST = 'RECEIVE_FRIEND_REQUEST';
 export const RECEIVE_FRIEND_REQUESTS = 'RECEIVE_FRIEND_REQUESTS';
 export const REMOVE_FRIEND_REQUEST = 'REMOVE_FRIEND_REQUEST';
-export const RECEIVE_FETCHED_STATUS = 'RECEIVE_FETCHED_STATUS';
+export const RECEIVE_FR_FETCHED_STATUS = 'RECEIVE_FR_FETCHED_STATUS';
 
 // receiveFriendRequest will only ever be used to transport frs where the currently logged in user is the sender
 const receiveFriendRequest = (fr) => ({
@@ -23,8 +23,8 @@ const removeFriendRequest = (frId) => ({
   frId
 });
 
-const receiveFetchedStatus = () => ({
-  type: RECEIVE_FETCHED_STATUS
+const receiveFRFetchedStatus = () => ({
+  type: RECEIVE_FR_FETCHED_STATUS
 })
 
 // fetch the sent and received frs, but only dispatch info to the reducers if the response data is not nil,
@@ -34,7 +34,7 @@ export const fetchFriendRequests = () => (dispatch) => (
     .then(res => {
       if(res.sent_frs){dispatch(receiveFriendRequests(res.sent_frs, 'sent'))};
       if(res.received_frs){dispatch(receiveFriendRequests(res.received_frs, 'received'))};
-      dispatch(receiveFetchedStatus());
+      dispatch(receiveFRFetchedStatus());
     })
 );
 

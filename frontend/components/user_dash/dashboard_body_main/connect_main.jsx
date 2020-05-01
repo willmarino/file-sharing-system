@@ -12,10 +12,12 @@ class ConnectMain extends React.Component{
     return(
       <CSSTransition classNames='simple-transition' timeout={750} in={this.props.shouldTransition} appear={true}>
         <div className='db-body-main'>
-          <div className='db-body-header'>
+          <div className='db-body-header' id='center-header'>
             <p>Connect</p>
           </div>
-          <UserSearch/>
+          <div className='db-body-body'>
+            <UserSearch/>
+          </div>
         </div>
       </CSSTransition>
     )

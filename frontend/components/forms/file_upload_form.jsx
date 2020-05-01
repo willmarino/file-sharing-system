@@ -33,18 +33,15 @@ class FileUploadForm extends React.Component{
       that.setState({ userFile });
     }
     fileReader.readAsDataURL(file);
-    debugger;
   }
   update(field){
     return e => {
       let userFile = this.state.userFile;
       userFile[field] = e.currentTarget.value;
       this.setState({ userFile });
-      // this.setState({ [field] : e.currentTarget.value });
     }
   }
   render(){
-    debugger;
     return(
       <form onSubmit={this.handleSubmit} className='file-upload-form-container'>
         <input type="file" onChange={this.handleUpload}/> 

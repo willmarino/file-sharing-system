@@ -2,12 +2,11 @@ import {
   RECEIVE_FRIEND_REQUEST,
   RECEIVE_FRIEND_REQUESTS,
   REMOVE_FRIEND_REQUEST,
-  RECEIVE_FETCHED_STATUS,
+  RECEIVE_FR_FETCHED_STATUS,
 } from '../actions/friend_request_actions';
 import { CLEAR_ALL } from '../actions/session_actions';
 
 const FriendRequestReducer = (state={}, action) => {
-  if(action.type === REMOVE_FRIEND_REQUEST) debugger;
   Object.freeze(state);
   let newState;
   switch(action.type){
@@ -27,7 +26,7 @@ const FriendRequestReducer = (state={}, action) => {
         (action.key === 'sent') ? newState[fr.receiver_id] = fr : newState[fr.sender_id] = fr;
       });
       return Object.assign({}, state, { [action.key] : newState });
-    case RECEIVE_FETCHED_STATUS:
+    case RECEIVE_FR_FETCHED_STATUS:
       return Object.assign({}, state, { fetched : true });
     case CLEAR_ALL:
       return {};

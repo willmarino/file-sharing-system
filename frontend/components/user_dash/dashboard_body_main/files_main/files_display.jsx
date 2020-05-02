@@ -1,4 +1,5 @@
 import React from 'react';
+import FileContainer from './files/file_container';
 
 class FilesDisplay extends React.Component{
   constructor(props){
@@ -11,10 +12,11 @@ class FilesDisplay extends React.Component{
     if(!this.props.files.fetched){
       return <p>loading</p>;
     }
+    debugger;
     return(
-      <div className='files-display-container'>
-        <p>this is the files display</p>
-      </div>
+      <ul className='files-display-container'>
+        {this.props.files.map((file) => <FileContainer file={file}/>)}
+      </ul>
     )
   }
 }

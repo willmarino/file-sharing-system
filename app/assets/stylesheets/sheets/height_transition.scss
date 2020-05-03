@@ -20,9 +20,9 @@
 }
 
 .height-transition-enter-active {
+  transition: all 750ms;
   opacity: 1;
   max-height: 200px;
-  transition: all 750ms;
 }
 
 .height-transition-exit {

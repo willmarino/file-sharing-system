@@ -19,19 +19,27 @@ class FilesMain extends React.Component{
 
   // the appear prop is necessary when I want a csstransition to run on initial rendering of a component
   render(){
+    let displayButtonClasses = "db-body-subheader";
+    let addButtonClasses = "db-body-subheader";
+    if(this.props.location.pathname === '/'){
+      displayButtonClasses += " db-body-subheader-focused";
+    }else if(this.props.location.pathname === '/add'){
+      addButtonClasses += " db-body-subheader-focused";
+    };
+
     return(
       <CSSTransition classNames='simple-transition' timeout={750} in={this.props.shouldTransition} appear={true}>
         <div className='db-body-main'>
           <div className='db-body-header'>
-            <div className='db-body-subheader' onClick={this.handleNav('/display')}>
+            <div className={displayButtonClasses} onClick={this.handleNav('/')}>
               <p>Display</p>
             </div>
-            <div className='db-body-subheader' id='files-add-header' onClick={this.handleNav('/add')}>
+            <div className={addButtonClasses} id='files-add-header' onClick={this.handleNav('/add')}>
               <p>Add</p>
             </div>
           </div>
           <div className='db-body-body'>
-            <Route exact path='/display' component={FilesDisplayContainer}/>
+            <Route exact path='/' component={FilesDisplayContainer}/>
             <Route exact path='/add' component={FileUploadFormContainer}/>
           </div>
         </div>

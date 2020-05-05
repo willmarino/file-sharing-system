@@ -9,11 +9,7 @@ class FilesDisplay extends React.Component{
     }
   }
   componentDidMount(){
-    this.props.fetchFiles()
-      .then(() => {
-        // let boolArr = new Array(this.props.files.length - 1).fill(false);
-        // this.setState({ transitionMap : boolArr });
-      })
+    this.props.fetchFiles();
   }
   render(){
     if(!this.props.files.fetched){

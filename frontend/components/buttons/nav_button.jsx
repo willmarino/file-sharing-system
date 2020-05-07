@@ -7,14 +7,14 @@ class NavButton extends React.Component{
   }
 
   handleClick(){
-    let { history, route } = this.props;
-    history.push(route);
+    let { history, destinationRoute } = this.props;
+    history.push(destinationRoute);
   }
 
   render(){
-    let { history, route } = this.props;
+    let { history, highlightedRoutes } = this.props;
     let manualClassList = 'ud-header-button';
-    if(route === history.location.pathname){
+    if(highlightedRoutes.includes(history.location.pathname)){
       manualClassList += ' ud-header-button-focused';
     }
     return(

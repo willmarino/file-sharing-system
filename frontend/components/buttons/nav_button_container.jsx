@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import NavButton from './nav_button';
 
 const msp = (state, ownProps) => ({
-  route: ownProps.route,
+  routes: ownProps.routes,
   message: ownProps.message
 });
 

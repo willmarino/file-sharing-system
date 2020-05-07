@@ -13,6 +13,11 @@ class DashboardBodyMain extends React.Component{
     this.state = {
       shouldTransition: false
     }
+    this.filesMainExtensions = [
+      '/',
+      '/add',
+      '/display'
+    ]
   }
 
   // I want to have a particular CSStransition occur not on the first render of the user dashboard (on refresh)
@@ -30,7 +35,8 @@ class DashboardBodyMain extends React.Component{
       <CSSTransition classNames='reverse-transition' in={this.props.mounted} timeout={750}>
         <Switch>
           <Route exact path='/connect' render={() => (<ConnectMainContainer shouldTransition={this.state.shouldTransition && this.props.location.pathname === '/connect'}/>)}/>
-          <Route path='/' render={() => (<FilesMainContainer shouldTransition={this.state.shouldTransition && this.props.location.pathname === '/'}/>)}/>
+          {/* <Route path='/' render={() => (<FilesMainContainer shouldTransition={this.state.shouldTransition && this.props.location.pathname === '/'}/>)}/> */}
+          <Route path='/' render={() => (<FilesMainContainer shouldTransition={this.state.shouldTransition && this.filesMainExtensions.includes(this.props.location.pathname)}/>)}/>
         </Switch>
       </CSSTransition>
     )

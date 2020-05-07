@@ -15,8 +15,10 @@ class Header extends React.Component{
         <div className='ud-header-container'>
           <UserBlock user={this.props.user}/>
           <ul className='ud-header-buttons'>
-            <NavButtonContainer message='files' route='/'/>
-            <NavButtonContainer message='connect' route='/connect'/>
+            <NavButtonContainer message='files' routes='/'/>
+            <NavButtonContainer message='connect' routse='/connect'/>
+            {/* <NavButtonContainer message='files' routes={['/', '/add', '/display']}/>
+            <NavButtonContainer message='connect' routse={['/connect']}/> */}
             <HeaderDropdownButton/>
           </ul>
         </div>

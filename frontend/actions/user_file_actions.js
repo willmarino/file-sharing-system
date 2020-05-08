@@ -32,7 +32,6 @@ export const createUserFile = (info) => (dispatch) => {
 export const fetchFiles = () => dispatch => (
   UserFileUtil.fetchFiles()
     .then(res => {
-      debugger;
       dispatch(receiveFiles(res));
       dispatch(receiveDisplayFiles());
     })

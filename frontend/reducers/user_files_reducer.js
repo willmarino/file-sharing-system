@@ -5,7 +5,6 @@ import {
 } from '../actions/user_file_actions';
 
 const FilesReducer = (state={}, action) => {
-  if(action.type === RECEIVE_FILES) debugger;
   Object.freeze(state);
   let newState = {};
   switch(action.type){

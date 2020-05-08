@@ -15,7 +15,6 @@ class FilesDisplay extends React.Component{
     if(!this.props.files.fetched){
       return <p>loading</p>;
     }
-    debugger;
     return(
       <ul className='files-display-container'>
         {Object.keys(this.props.files).map((fileKey) => {

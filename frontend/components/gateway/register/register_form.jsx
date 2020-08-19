@@ -156,7 +156,7 @@ class RegisterForm extends React.Component{
               {createErrorsComponent(this.state.errors.confirmPassword, this.state.errorsShowing)}
             </div>
             <div className='credentials-submit-row'>
-              <input className='submit-button' type='submit' value='Register'/>
+              <input className='submit-button' id="session-form-submit-button" type='submit' value='Register'/>
             </div>
           </form>
           {/* <p className='gateway-form-navigator' onClick={this.navigateToLogin} >Login Page</p> */}

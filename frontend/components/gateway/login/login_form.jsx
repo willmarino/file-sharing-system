@@ -119,7 +119,7 @@ class LoginForm extends React.Component{
               {createErrorsComponent(this.state.errors.password, this.state.errorsShowing)}
             </div>
             <div className='credentials-submit-row'>
-              <input className='submit-button' type='submit' value='Login'/>
+              <input id="session-form-submit-button" className='submit-button' type='submit' value='Login'/>
             </div>
           </form>
           {createErrorsComponent(this.props.sessionErrors, this.state.errorsShowing)}

@@ -1,5 +1,5 @@
 .gateway-form-container{
-  height: 350px;
+  height: 450px;
   width: 350px;
 
   display: flex;
@@ -13,7 +13,7 @@
 
   background: 	white;
   border-radius: 20px;
-  border: 1px solid #888888;
+  border: 1px solid black;
 }
 
 .gateway-form-header{
@@ -66,4 +66,8 @@
 .credentials-submit-row{
   display: flex;
   justify-content: center;
+}
+
+#session-form-submit-button{
+  margin-top: 25px;
 }

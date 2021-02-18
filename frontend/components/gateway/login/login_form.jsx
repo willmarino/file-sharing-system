@@ -11,8 +11,8 @@ class LoginForm extends React.Component{
         password: []
       },
       credentials : {
-        email : '',
-        password : ''
+        email : 'w.marino997@gmail.com',
+        password : 'hunter2'
       },
       mounted: false,
       errorsShowing: false,

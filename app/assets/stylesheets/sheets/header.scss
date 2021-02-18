@@ -1,3 +1,5 @@
+@import './colors.scss';
+
 .ud-header-container{
   height: 50px;
   width: 100%;
@@ -12,5 +14,5 @@
 
   margin-bottom: 20px;
 
-  background: white;
+  background: $background;
 }

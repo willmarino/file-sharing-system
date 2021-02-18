@@ -36,7 +36,7 @@ class DashboardBodyMain extends React.Component{
   }
 
   componentDidUpdate(prevProps){
-    debugger;
+    // debugger;
     this.prevUrl = prevProps.location.pathname;
     this.curUrl = this.props.location.pathname;
     if(prevProps.mounted && !this.state.canTransition){
@@ -45,7 +45,7 @@ class DashboardBodyMain extends React.Component{
   }
 
   render(){
-    debugger;
+    // debugger;
     let { location } = this.props;
     let shouldTransition = this.checkUrls(this.prevUrl, this.curUrl);
     return(
